@@ -88,11 +88,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onCategoryClick, favoritesCount 
               </span>
             )}
           </button>
-
-          <button className="flex items-center space-x-2 bg-[#FF6A4D] hover:bg-[#E8583B] text-white px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 shadow-lg shadow-[#FF6A4D]/30 hover:scale-105 active:scale-95">
-            <User className="w-4 h-4" />
-            <span>Login</span>
-          </button>
         </div>
       </div>
     </header>

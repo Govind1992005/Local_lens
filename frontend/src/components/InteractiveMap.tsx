@@ -15,8 +15,16 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
   useEffect(() => {
     if (places.length > 0) {
       setActivePlace(places[0]);
+    } else {
+      setActivePlace(null);
     }
   }, [places]);
+
+  const handleGetDirections = (place: Place) => {
+    const destinationQuery = encodeURIComponent(`${place.title}, ${place.sub_location || selectedStateName}`);
+    const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}&destination_place_id=`;
+    window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="map" className="py-16 px-6 max-w-7xl mx-auto">
@@ -42,28 +50,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
 
           {places.map((place) => {
             const isSelected = activePlace?.id === place.id;
-  const handleGetDirections = (place: Place) => {
-    if (typeof window !== 'undefined' && 'geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const userLat = position.coords.latitude;
-          const userLng = position.coords.longitude;
-          const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${place.latitude},${place.longitude}&travelmode=driving`;
-          window.open(mapsUrl, '_blank');
-        },
-        (error) => {
-          console.warn("Geolocation permission error/denied:", error.message);
-          const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.latitude},${place.longitude}`;
-          window.open(fallbackUrl, '_blank');
-        },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-      );
-    } else {
-      window.open(`https://www.google.com/maps/dir/?api=1&destination=${place.latitude},${place.longitude}`, '_blank');
-    }
-  };
-
-  return (
+            return (
               <div
                 key={place.id}
                 onClick={() => setActivePlace(place)}

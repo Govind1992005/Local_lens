@@ -19,7 +19,7 @@ import { FooterValueProp } from '@/components/FooterValueProp';
 const INITIAL_STATES: StateData[] = [
   {
     id: "andhra_pradesh", name: "Andhra Pradesh", tagline: "The Sunrise State of India",
-    hero_image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80",
+    hero_image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80",
     cities: [
       { id: "visakhapatnam", name: "Visakhapatnam (Vizag)" }, { id: "araku", name: "Araku Valley" },
       { id: "vijayawada", name: "Vijayawada" }, { id: "tirupati", name: "Tirupati" },
