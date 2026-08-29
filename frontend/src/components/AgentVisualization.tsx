@@ -68,29 +68,23 @@ export const AgentVisualization: React.FC<AgentVisualizationProps> = ({
             </div>
 
             {/* Architecture Node Flow */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-6 font-sans">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 font-sans">
               <div className={`p-3 rounded-xl border transition-all ${loading ? 'bg-[#FF6A4D]/30 border-[#FF6A4D] text-white animate-pulse' : 'bg-white/10 border-white/20 text-white'}`}>
-                <div className="text-[10px] uppercase font-bold text-[#FF6A4D] mb-1">Node 1: HTTP API</div>
-                <div className="font-bold text-xs truncate">/api/v1/search</div>
-                <div className="text-[10px] opacity-80 mt-1 truncate">{selectedStateName} ({cityLabel})</div>
+                <div className="text-[10px] uppercase font-bold text-[#FF6A4D] mb-1">Stage 1: Primary Agent</div>
+                <div className="font-bold text-xs">Food & Places Discovery</div>
+                <div className="text-[10px] opacity-80 mt-1">Discovered {placesCount} Places & {foodsCount} Foods</div>
               </div>
 
               <div className={`p-3 rounded-xl border transition-all ${loading ? 'bg-[#D8A657]/30 border-[#D8A657] text-white animate-pulse' : 'bg-white/10 border-white/20 text-white'}`}>
-                <div className="text-[10px] uppercase font-bold text-[#D8A657] mb-1">Node 2: Food Agent</div>
-                <div className="font-bold text-xs">food_agent.py</div>
-                <div className="text-[10px] opacity-80 mt-1">{loading ? 'Searching Dishes...' : `${foodsCount} Dishes Discovered`}</div>
-              </div>
-
-              <div className={`p-3 rounded-xl border transition-all ${loading ? 'bg-emerald-500/30 border-emerald-500 text-white animate-pulse' : 'bg-white/10 border-white/20 text-white'}`}>
-                <div className="text-[10px] uppercase font-bold text-emerald-400 mb-1">Node 3: Places Agent</div>
-                <div className="font-bold text-xs">places_agent.py</div>
-                <div className="text-[10px] opacity-80 mt-1">{loading ? 'Extracting POIs...' : `${placesCount} Landmarks Found`}</div>
+                <div className="text-[10px] uppercase font-bold text-[#D8A657] mb-1">Stage 2: Chained Agent</div>
+                <div className="font-bold text-xs">YouTube Vlog Consensus</div>
+                <div className="text-[10px] opacity-80 mt-1">Analyzed Vlogs for Stage 1 Entities</div>
               </div>
 
               <div className={`p-3 rounded-xl border transition-all ${loading ? 'bg-purple-500/30 border-purple-500 text-white animate-pulse' : 'bg-white/10 border-white/20 text-white'}`}>
-                <div className="text-[10px] uppercase font-bold text-purple-400 mb-1">Node 4: Image Agent</div>
-                <div className="font-bold text-xs">image_agent.py</div>
-                <div className="text-[10px] opacity-80 mt-1">{loading ? 'Resolving Photos...' : 'Unique URLs Assigned'}</div>
+                <div className="text-[10px] uppercase font-bold text-purple-400 mb-1">Stage 3: Dependent Agent</div>
+                <div className="font-bold text-xs">High-Fidelity Image Resolver</div>
+                <div className="text-[10px] opacity-80 mt-1">Matched Unique Photos & Names</div>
               </div>
             </div>
 

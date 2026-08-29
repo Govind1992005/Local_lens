@@ -7,7 +7,7 @@ from fastapi import APIRouter, Query, HTTPException
 from typing import Optional
 
 from app.schemas.search import ConcurrentSearchResponse
-from app.agents.search_orchestrator import orchestrate_concurrent_search
+from app.agents.chained_orchestrator import orchestrate_chained_search
 
 router = APIRouter(prefix="/api/v1/search", tags=["Concurrent Search"])
 
@@ -16,9 +16,9 @@ async def concurrent_search(
     state: str = Query(..., description="Target Indian state (e.g., Andhra Pradesh, Rajasthan, Kerala)"),
     city: Optional[str] = Query(None, description="Optional city within the state")
 ):
-    """Executes multi-agent concurrent search (Food Agent, Places Agent, Image Resolver Agent)."""
+    """Executes multi-stage chained agent pipeline (Stage 1 Discovery -> Stage 2 YouTube Consensus -> Stage 3 Image Resolution)."""
     if not state.strip():
         raise HTTPException(status_code=400, detail="State parameter is required")
 
-    results = await orchestrate_concurrent_search(state=state, city=city)
+    results = await orchestrate_chained_search(state=state, city=city)
     return results

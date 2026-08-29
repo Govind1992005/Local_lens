@@ -11,13 +11,15 @@ import { CultureSection } from '@/components/CultureSection';
 import { InteractiveMap } from '@/components/InteractiveMap';
 import { AITripPlanner } from '@/components/AITripPlanner';
 import { AgentVisualization } from '@/components/AgentVisualization';
+import { YouTubeAnalysisSection } from '@/components/YouTubeAnalysisSection';
+import { MultiModalAssistantModal } from '@/components/MultiModalAssistantModal';
 import { FooterValueProp } from '@/components/FooterValueProp';
 
 // Full dataset fallback state for offline rendering
 const INITIAL_STATES: StateData[] = [
   {
     id: "andhra_pradesh", name: "Andhra Pradesh", tagline: "The Sunrise State of India",
-    hero_image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
+    hero_image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80",
     cities: [
       { id: "visakhapatnam", name: "Visakhapatnam (Vizag)" }, { id: "araku", name: "Araku Valley" },
       { id: "vijayawada", name: "Vijayawada" }, { id: "tirupati", name: "Tirupati" },
@@ -163,6 +165,38 @@ const INITIAL_STATES: StateData[] = [
 
 const INITIAL_PLACES: Place[] = [
   {
+    id: "uppada-beach",
+    state_id: "andhra_pradesh",
+    city_id: "kakinada",
+    title: "Uppada Beach & Weaving Village",
+    sub_location: "Uppada Road, Kakinada",
+    rating: 4.6,
+    reviews_count: 5200,
+    category: "Scenic Coast & Silk Heritage",
+    best_view_time: "5:00 PM - 6:30 PM (Sunset & Sea Breeze)",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    description: "Pristine beach famous for handcrafted Jamdani silk sarees and fresh seafood.",
+    latitude: 17.0863,
+    longitude: 82.3278,
+    tags: ["#UppadaBeach", "#Kakinada"]
+  },
+  {
+    id: "coringa-sanctuary",
+    state_id: "andhra_pradesh",
+    city_id: "kakinada",
+    title: "Coringa Wildlife Sanctuary & Mangroves",
+    sub_location: "Corangi, Kakinada",
+    rating: 4.7,
+    reviews_count: 8400,
+    category: "Eco Mangrove Reserve",
+    best_view_time: "6:30 AM - 9:30 AM (Boating & Bird Watching)",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+    description: "India's second largest mangrove forest renowned for boardwalks, otters, and river boating.",
+    latitude: 16.8925,
+    longitude: 82.2858,
+    tags: ["#Mangroves", "#Coringa"]
+  },
+  {
     id: "rk-beach",
     state_id: "andhra_pradesh",
     city_id: "visakhapatnam",
@@ -193,74 +227,23 @@ const INITIAL_PLACES: Place[] = [
     latitude: 18.3273,
     longitude: 82.8775,
     tags: ["#MistyHills", "#CoffeePlantation", "#Nature"]
-  },
-  {
-    id: "borra-caves",
-    state_id: "andhra_pradesh",
-    city_id: "araku",
-    title: "Borra Stalactite Caves",
-    sub_location: "Ananthagiri Hills, Araku",
-    rating: 4.6,
-    reviews_count: 6540,
-    category: "Heritage & Geological",
-    best_view_time: "10:00 AM - 1:00 PM (Optimal Cave Illumination)",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
-    description: "One of India's deepest limestone caves featuring naturally formed stalagmites illuminated with vibrant lights.",
-    latitude: 18.2804,
-    longitude: 83.0396,
-    tags: ["#Geology", "#Caves", "#Adventure"]
-  },
-  {
-    id: "kailasagiri",
-    state_id: "andhra_pradesh",
-    city_id: "visakhapatnam",
-    title: "Kailasagiri Hilltop Park",
-    sub_location: "Hill Top Road, Visakhapatnam",
-    rating: 4.6,
-    reviews_count: 9100,
-    category: "Panoramic Viewpoint",
-    best_view_time: "5:00 PM - 6:45 PM (Sunset Panoramic Coast Views)",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    description: "Hilltop park offering panoramic views of the Bay of Bengal, ropeway rides, and colossal Shiva-Parvati statues.",
-    latitude: 17.7492,
-    longitude: 83.3422,
-    tags: ["#PanoramicViews", "#Ropeway", "#Park"]
-  },
-  {
-    id: "hawa-mahal",
-    state_id: "rajasthan",
-    city_id: "jaipur",
-    title: "Hawa Mahal (Palace of Winds)",
-    sub_location: "Pink City, Jaipur",
-    rating: 4.8,
-    reviews_count: 34200,
-    category: "Heritage Architecture",
-    best_view_time: "6:30 AM - 8:00 AM (Early Sun Lighting Sandstone)",
-    image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80",
-    description: "Five-story pink sandstone palace with 953 intricately carved windows (jharokhas) designed for royal breezes.",
-    latitude: 26.9239,
-    longitude: 75.8267,
-    tags: ["#HeritageTemples", "#Architecture", "#PinkCity"]
-  },
-  {
-    id: "alleppey-backwaters",
-    state_id: "kerala",
-    city_id: "alleppey",
-    title: "Alleppey Houseboat Backwaters",
-    sub_location: "Punnamada Lake, Alleppey",
-    rating: 4.9,
-    reviews_count: 41200,
-    category: "Eco Tourism",
-    best_view_time: "4:00 PM - 6:30 PM (Sunset Houseboat Cruising)",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
-    description: "Tranquil network of lagoons, lakes, and canals navigated by traditional Kettuvallam houseboats.",
-    latitude: 9.4981,
-    longitude: 76.3388,
-    tags: ["#Backwaters", "#Houseboat", "#Serene"]
   }
 ];
 
 const INITIAL_FOODS: Food[] = [
+  {
+    id: "kakinada-kaja",
+    state_id: "andhra_pradesh",
+    city_id: "kakinada",
+    dish_name: "Gottam Kakinada Kaja",
+    category: "Signature Heritage Sweet",
+    price_inr: 80,
+    trust_score: 99,
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
+    review_quote: "Crispy multi-layered sweet pastry filled with rich hot sugar syrup.",
+    source: "Kakinada Sweet Guild",
+    tags: ["#KakinadaKaja", "#Sweet"]
+  },
   {
     id: "andhra-thali",
     state_id: "andhra_pradesh",
@@ -273,58 +256,6 @@ const INITIAL_FOODS: Food[] = [
     review_quote: "Pure spice perfection! The aromatic Pappu with hot ghee and Gongura chutney is unmatched.",
     source: "Local Foodie Vlogs & 1,420 Reviews",
     tags: ["#Thali", "#Spicy", "#Authentic"]
-  },
-  {
-    id: "gongura-pachadi",
-    state_id: "andhra_pradesh",
-    city_id: "vijayawada",
-    dish_name: "Gongura Pachadi & Rice",
-    category: "Local Specialty Chutney",
-    price_inr: 60,
-    trust_score: 96,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
-    review_quote: "The tangy signature sorrel leaf pickle served with hot steaming rice and garlic pods.",
-    source: "YouTube Street Food Vloggers",
-    tags: ["#Tangy", "#StreetFood", "#Signature"]
-  },
-  {
-    id: "bamboo-chicken",
-    state_id: "andhra_pradesh",
-    city_id: "araku",
-    dish_name: "Araku Bamboo Chicken",
-    category: "Tribal Delicacy",
-    price_inr: 250,
-    trust_score: 94,
-    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80",
-    review_quote: "Marinated chicken cooked inside green bamboo stalks over open charcoal embers with zero added oil.",
-    source: "Araku Tribal Food Guides",
-    tags: ["#TribalFood", "#Organic", "#Smoky"]
-  },
-  {
-    id: "pesarattu",
-    state_id: "andhra_pradesh",
-    city_id: "visakhapatnam",
-    dish_name: "MLA Pesarattu Upma",
-    category: "Breakfast Classic",
-    price_inr: 80,
-    trust_score: 95,
-    image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
-    review_quote: "Crispy green gram crepe stuffed with savory ginger upma served with fresh ginger chutney.",
-    source: "Coastal Andhra Breakfast Club",
-    tags: ["#Breakfast", "#Healthy", "#Crispy"]
-  },
-  {
-    id: "dal-baati-churma",
-    state_id: "rajasthan",
-    city_id: "jaipur",
-    dish_name: "Dal Baati Churma",
-    category: "Royal Cuisine",
-    price_inr: 220,
-    trust_score: 99,
-    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
-    review_quote: "Baked wheat balls dipped in pure desi ghee served with spicy Panchmel dal and sweet churma.",
-    source: "Jaipur Food Tours & Heritage Guides",
-    tags: ["#RoyalThali", "#DesiGhee", "#MustTry"]
   }
 ];
 
@@ -379,6 +310,8 @@ export default function Home() {
   const [places, setPlaces] = useState<Place[]>([]);
   const [foods, setFoods] = useState<Food[]>([]);
   const [culture, setCulture] = useState<CultureItem[]>([]);
+  const [restaurantTiers, setRestaurantTiers] = useState<any>(null);
+  const [youtubeData, setYoutubeData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   // Fetch data from multi-agent API whenever selectedState or selectedCityId changes
@@ -395,50 +328,63 @@ export default function Home() {
       .then(res => res.json())
       .then(data => {
         if (isMounted && data.results) {
+          if (data.results.youtube_analysis) {
+            setYoutubeData(data.results.youtube_analysis);
+          }
+          if (data.results.restaurant_tiers) {
+            setRestaurantTiers(data.results.restaurant_tiers);
+          }
+          
+          // Map places returned by agent for this specific location
           if (data.results.places && data.results.places.length > 0) {
             setPlaces(data.results.places.map((p: any) => ({
               id: p.id,
               state_id: selectedState.id,
-              city_id: p.city ? p.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId,
-              title: p.name,
-              sub_location: `${p.city || selectedState.name}, ${selectedState.name}`,
+              city_id: p.city_id ? p.city_id.toLowerCase().replace(/\s+/g, '_') : (p.city ? p.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId),
+              title: p.title || p.name,
+              sub_location: p.sub_location || `${p.city || selectedState.name}, ${selectedState.name}`,
               rating: p.rating || 4.5,
               reviews_count: p.reviews_count || 1200,
               category: p.category || "Attraction",
               best_view_time: p.best_view_time || "Morning / Evening",
-              image: p.image_url,
+              image: p.image || p.image_url,
               description: p.description,
               latitude: p.latitude || 17.7,
               longitude: p.longitude || 83.3,
               tags: p.tags || ["#LocalLens", "#Explore"]
             })));
           } else {
-            setPlaces([]);
+            // Static fallback for places if backend returned empty list
+            setPlaces(INITIAL_PLACES.filter(p => p.state_id === selectedState.id));
           }
+
+          // Map foods returned by agent for this specific location
           if (data.results.food && data.results.food.length > 0) {
             setFoods(data.results.food.map((f: any) => ({
               id: f.id,
               state_id: selectedState.id,
-              city_id: f.city ? f.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId,
-              dish_name: f.name,
+              city_id: f.city_id ? f.city_id.toLowerCase().replace(/\s+/g, '_') : (f.city ? f.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId),
+              dish_name: f.dish_name || f.name,
               category: f.category || "Local Delicacy",
               price_inr: f.price_inr || 150,
               trust_score: f.trust_score || 95,
-              image: f.image_url,
+              image: f.image || f.image_url,
               review_quote: f.review_quote || "Must-try authentic dish verified by local foodies.",
               source: f.source || "Local Reviews",
               tags: f.tags || ["#Authentic", "#LocalSpecialty"]
             })));
           } else {
-            setFoods([]);
+            // Static fallback for foods if backend returned empty list
+            setFoods(INITIAL_FOODS.filter(f => f.state_id === selectedState.id));
           }
         }
       })
       .catch(err => {
-        console.warn('Backend search agent offline, falling back to strict state filter:', err);
-        // Fallback filter strictly by selected state ID
-        setPlaces(INITIAL_PLACES.filter(p => p.state_id === selectedState.id));
-        setFoods(INITIAL_FOODS.filter(f => f.state_id === selectedState.id));
+        console.warn('Backend search agent offline, using static dataset fallback:', err);
+        const filteredP = INITIAL_PLACES.filter(p => p.state_id === selectedState.id);
+        const filteredF = INITIAL_FOODS.filter(f => f.state_id === selectedState.id);
+        setPlaces(filteredP);
+        setFoods(filteredF);
       })
       .finally(() => {
         if (isMounted) setLoading(false);
@@ -468,7 +414,7 @@ export default function Home() {
 
   const handleStateSelect = (stateObj: StateData) => {
     setSelectedState(stateObj);
-    setSelectedCityId(''); // Reset city on state change
+    setSelectedCityId(''); // Reset city selection on state change
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -523,6 +469,18 @@ export default function Home() {
         foodsCount={foods.length}
       />
 
+      {/* Multi-Modal AI Assistant Guide Banner & Modal */}
+      <MultiModalAssistantModal
+        selectedStateName={selectedState.name}
+        selectedCityId={selectedCityId}
+        placesCount={places.length}
+        foodsCount={foods.length}
+        placesData={places}
+        foodsData={foods}
+        restaurantTiers={restaurantTiers}
+        youtubeData={youtubeData}
+      />
+
       {/* Quick Interactive Category Cards */}
       <QuickCategories
         activeCategory={activeCategory}
@@ -547,6 +505,12 @@ export default function Home() {
         foods={filteredFoods}
         onToggleFavorite={handleToggleFavorite}
         favorites={favorites}
+      />
+
+      {/* AI YouTube Vlogs & Transcripts Scraper Section */}
+      <YouTubeAnalysisSection
+        youtubeData={youtubeData}
+        locationName={selectedCityId ? selectedCityId.replace(/_/g, ' ').toUpperCase() : selectedState.name}
       />
 
       {/* Cultural Traditions Section */}

@@ -22,10 +22,15 @@ async def search_places(state: str, city: Optional[str] = None) -> List[Dict[str
         p_state = p.get("state_id", "").lower().replace("_", "").replace(" ", "")
         p_city = p.get("city_id", "").lower().replace("_", "").replace(" ", "")
         
-        if state_clean in p_state or p_state in state_clean:
-            state_matches.append(p)
-            if city_clean and (city_clean in p_city or p_city in city_clean):
+        # Ensure query_term is always set
+        if "query_term" not in p:
+            p["query_term"] = f"{p.get('title', p.get('name', ''))} {p.get('city_id', '')}".lower()
+
+        if city_clean:
+            if city_clean in p_city or p_city in city_clean:
                 city_matches.append(p)
+        elif state_clean in p_state or p_state in state_clean:
+            state_matches.append(p)
 
     if city_matches:
         return city_matches

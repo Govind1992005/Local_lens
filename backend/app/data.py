@@ -6,7 +6,7 @@ Covers all 28 Indian States with dedicated cities, iconic places, authentic loca
 STATES_DATA = {
     "andhra_pradesh": {
         "id": "andhra_pradesh", "name": "Andhra Pradesh", "tagline": "The Sunrise State of India",
-        "hero_image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
+        "hero_image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80",
         "cities": [
             {"id": "visakhapatnam", "name": "Visakhapatnam (Vizag)"},
             {"id": "araku", "name": "Araku Valley"},
@@ -292,8 +292,18 @@ PLACES_DATA = [
         "title": "Uppada Beach & Weaving Village", "sub_location": "Uppada Road, Kakinada",
         "rating": 4.6, "reviews_count": 5200, "category": "Scenic Coast & Silk Heritage",
         "best_view_time": "5:00 PM - 6:30 PM (Sunset & Sea Breeze)",
+        "query_term": "uppada beach kakinada",
         "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
         "description": "Pristine beach famous for handcrafted Jamdani silk sarees and fresh seafood.", "latitude": 17.0863, "longitude": 82.3278, "tags": ["#UppadaBeach", "#Kakinada"]
+    },
+    {
+        "id": "coringa-sanctuary", "state_id": "andhra_pradesh", "city_id": "kakinada",
+        "title": "Coringa Wildlife Sanctuary & Mangroves", "sub_location": "Corangi, Kakinada",
+        "rating": 4.7, "reviews_count": 8400, "category": "Eco Mangrove Reserve",
+        "best_view_time": "6:30 AM - 9:30 AM (Boating & Bird Watching)",
+        "query_term": "coringa sanctuary kakinada",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "description": "India's second largest mangrove forest renowned for boardwalks, otters, and river boating.", "latitude": 16.8925, "longitude": 82.2858, "tags": ["#Mangroves", "#Coringa"]
     },
     {
         "id": "kotappakonda", "state_id": "andhra_pradesh", "city_id": "guntur",
@@ -549,14 +559,16 @@ FOODS_DATA = [
         "id": "kakinada-kaja", "state_id": "andhra_pradesh", "city_id": "kakinada",
         "dish_name": "Gottam Kakinada Kaja", "category": "Signature Heritage Sweet",
         "price_inr": 80, "trust_score": 99,
-        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
+        "query_term": "gottam kakinada kaja",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Kakinada_Kaja.jpg/800px-Kakinada_Kaja.jpg",
         "review_quote": "Crispy layered sweet pastry filled with rich hot sugar syrup.", "source": "Kakinada Sweet Guild", "tags": ["#KakinadaKaja", "#Sweet"]
     },
     {
         "id": "guntur-idli", "state_id": "andhra_pradesh", "city_id": "guntur",
         "dish_name": "Guntur Karam Idli & Mirchi Bajji", "category": "Fiery Street Snack",
         "price_inr": 60, "trust_score": 97,
-        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
+        "query_term": "guntur karam idli",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/Idli_Sambar.jpg",
         "review_quote": "Steamed idlis tossed in spicy Guntur red chili podi and ghee.", "source": "Guntur Street Eats", "tags": ["#SpicyPodi", "#Guntur"]
     },
     {
