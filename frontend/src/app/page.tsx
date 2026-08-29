@@ -10,69 +10,154 @@ import { FoodCarousel } from '@/components/FoodCarousel';
 import { CultureSection } from '@/components/CultureSection';
 import { InteractiveMap } from '@/components/InteractiveMap';
 import { AITripPlanner } from '@/components/AITripPlanner';
+import { AgentVisualization } from '@/components/AgentVisualization';
 import { FooterValueProp } from '@/components/FooterValueProp';
 
-// Embedded initial states dataset for instant rendering & API fallback
+// Full dataset fallback state for offline rendering
 const INITIAL_STATES: StateData[] = [
   {
-    id: "andhra_pradesh",
-    name: "Andhra Pradesh",
-    tagline: "The Sunrise State of India",
+    id: "andhra_pradesh", name: "Andhra Pradesh", tagline: "The Sunrise State of India",
     hero_image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
     cities: [
-      { id: "visakhapatnam", name: "Visakhapatnam (Vizag)" },
-      { id: "araku", name: "Araku Valley" },
-      { id: "vijayawada", name: "Vijayawada" },
-      { id: "tirupati", name: "Tirupati" }
+      { id: "visakhapatnam", name: "Visakhapatnam (Vizag)" }, { id: "araku", name: "Araku Valley" },
+      { id: "vijayawada", name: "Vijayawada" }, { id: "tirupati", name: "Tirupati" },
+      { id: "guntur", name: "Guntur" }, { id: "kakinada", name: "Kakinada" }
     ]
   },
   {
-    id: "rajasthan",
-    name: "Rajasthan",
-    tagline: "The Land of Kings & Palaces",
-    hero_image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80",
-    cities: [
-      { id: "jaipur", name: "Jaipur" },
-      { id: "udaipur", name: "Udaipur" },
-      { id: "jaisalmer", name: "Jaisalmer" },
-      { id: "jodhpur", name: "Jodhpur" }
-    ]
+    id: "arunachal_pradesh", name: "Arunachal Pradesh", tagline: "Land of the Dawn-Lit Mountains",
+    hero_image: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "tawang", name: "Tawang" }, { id: "itanagar", name: "Itanagar" }, { id: "ziro", name: "Ziro Valley" }]
   },
   {
-    id: "kerala",
-    name: "Kerala",
-    tagline: "God's Own Country",
+    id: "assam", name: "Assam", tagline: "Land of Blue Hills & Red River",
+    hero_image: "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "guwahati", name: "Guwahati" }, { id: "kaziranga", name: "Kaziranga" }, { id: "jorhat", name: "Jorhat" }]
+  },
+  {
+    id: "bihar", name: "Bihar", tagline: "Blissful Land of Enlightenment & Heritage",
+    hero_image: "https://images.unsplash.com/photo-1622308644420-b20142dc993c?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "patna", name: "Patna" }, { id: "gaya", name: "Bodh Gaya" }, { id: "nalanda", name: "Nalanda" }]
+  },
+  {
+    id: "chhattisgarh", name: "Chhattisgarh", tagline: "Full of Surprises & Majestic Waterfalls",
+    hero_image: "https://images.unsplash.com/photo-1617854818583-09e7f077a156?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "raipur", name: "Raipur" }, { id: "jagdalpur", name: "Jagdalpur" }]
+  },
+  {
+    id: "goa", name: "Goa", tagline: "A Pearl of the Orient & Sun-Kissed Coasts",
+    hero_image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "panaji", name: "Panaji" }, { id: "calangute", name: "Calangute" }, { id: "margao", name: "Margao" }]
+  },
+  {
+    id: "gujarat", name: "Gujarat", tagline: "Land of Legends & White Desert",
+    hero_image: "https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "ahmedabad", name: "Ahmedabad" }, { id: "kutch", name: "Rann of Kutch" }, { id: "surat", name: "Surat" }]
+  },
+  {
+    id: "haryana", name: "Haryana", tagline: "A Land of Milk, Ghee & Epic History",
+    hero_image: "https://images.unsplash.com/photo-1588096344356-9b589415c899?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "gurugram", name: "Gurugram" }, { id: "kurukshetra", name: "Kurukshetra" }]
+  },
+  {
+    id: "himachal_pradesh", name: "Himachal Pradesh", tagline: "Land of Gods & Snow-Capped Peaks",
+    hero_image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "shimla", name: "Shimla" }, { id: "manali", name: "Manali" }, { id: "dharamshala", name: "Dharamshala" }]
+  },
+  {
+    id: "jharkhand", name: "Jharkhand", tagline: "The Land of Forests & Waterfalls",
+    hero_image: "https://images.unsplash.com/photo-1607583449132-70b54e7d488e?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "ranchi", name: "Ranchi" }, { id: "jamshedpur", name: "Jamshedpur" }]
+  },
+  {
+    id: "karnataka", name: "Karnataka", tagline: "One State, Many Worlds",
+    hero_image: "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "bengaluru", name: "Bengaluru" }, { id: "mysuru", name: "Mysuru" }, { id: "hampi", name: "Hampi" }, { id: "coorg", name: "Coorg" }]
+  },
+  {
+    id: "kerala", name: "Kerala", tagline: "God's Own Country",
     hero_image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80",
-    cities: [
-      { id: "alleppey", name: "Alleppey (Alappuzha)" },
-      { id: "munnar", name: "Munnar" },
-      { id: "kochi", name: "Kochi" },
-      { id: "varkala", name: "Varkala" }
-    ]
+    cities: [{ id: "alleppey", name: "Alleppey" }, { id: "munnar", name: "Munnar" }, { id: "kochi", name: "Kochi" }, { id: "varkala", name: "Varkala" }]
   },
   {
-    id: "maharashtra",
-    name: "Maharashtra",
-    tagline: "Unlimited Gateway to Heritage & Energy",
+    id: "madhya_pradesh", name: "Madhya Pradesh", tagline: "The Heart of Incredible India",
+    hero_image: "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "indore", name: "Indore" }, { id: "bhopal", name: "Bhopal" }, { id: "khajuraho", name: "Khajuraho" }]
+  },
+  {
+    id: "maharashtra", name: "Maharashtra", tagline: "Unlimited Gateway to Heritage & Energy",
     hero_image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1920&q=80",
-    cities: [
-      { id: "mumbai", name: "Mumbai" },
-      { id: "pune", name: "Pune" },
-      { id: "nashik", name: "Nashik" },
-      { id: "aurangabad", name: "Chhatrapati Sambhajinagar" }
-    ]
+    cities: [{ id: "mumbai", name: "Mumbai" }, { id: "pune", name: "Pune" }, { id: "nashik", name: "Nashik" }]
   },
   {
-    id: "tamil_nadu",
-    name: "Tamil Nadu",
-    tagline: "Land of Temples & Dravidian Heritage",
+    id: "manipur", name: "Manipur", tagline: "Jewel of India & Floating Lake Marvels",
+    hero_image: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "imphal", name: "Imphal" }, { id: "loktak", name: "Loktak Lake" }]
+  },
+  {
+    id: "meghalaya", name: "Meghalaya", tagline: "Abode of Clouds & Living Root Bridges",
+    hero_image: "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "shillong", name: "Shillong" }, { id: "cherrapunji", name: "Cherrapunji" }]
+  },
+  {
+    id: "mizoram", name: "Mizoram", tagline: "Land of Rolling Hills & Serene Valleys",
+    hero_image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "aizawl", name: "Aizawl" }, { id: "lunglei", name: "Lunglei" }]
+  },
+  {
+    id: "nagaland", name: "Nagaland", tagline: "Land of Festivals & Vibrant Heritage",
+    hero_image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "kohima", name: "Kohima" }, { id: "dimapur", name: "Dimapur" }]
+  },
+  {
+    id: "odisha", name: "Odisha", tagline: "India's Best Kept Secret & Golden Sands",
     hero_image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80",
-    cities: [
-      { id: "chennai", name: "Chennai" },
-      { id: "madurai", name: "Madurai" },
-      { id: "ooty", name: "Ooty" },
-      { id: "thanjavur", name: "Thanjavur" }
-    ]
+    cities: [{ id: "puri", name: "Puri" }, { id: "bhubaneswar", name: "Bhubaneswar" }, { id: "konark", name: "Konark" }]
+  },
+  {
+    id: "punjab", name: "Punjab", tagline: "Land of Five Rivers & Golden Warmth",
+    hero_image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "amritsar", name: "Amritsar" }, { id: "ludhiana", name: "Ludhiana" }]
+  },
+  {
+    id: "rajasthan", name: "Rajasthan", tagline: "The Land of Kings & Palaces",
+    hero_image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "jaipur", name: "Jaipur" }, { id: "udaipur", name: "Udaipur" }, { id: "jaisalmer", name: "Jaisalmer" }]
+  },
+  {
+    id: "sikkim", name: "Sikkim", tagline: "Small State, Big Heart & Majestic Kanchenjunga",
+    hero_image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "gangtok", name: "Gangtok" }, { id: "pelling", name: "Pelling" }]
+  },
+  {
+    id: "tamil_nadu", name: "Tamil Nadu", tagline: "Land of Temples & Dravidian Heritage",
+    hero_image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "chennai", name: "Chennai" }, { id: "madurai", name: "Madurai" }, { id: "ooty", name: "Ooty" }]
+  },
+  {
+    id: "telangana", name: "Telangana", tagline: "The Seed State of Innovation & Pearl City",
+    hero_image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "hyderabad", name: "Hyderabad" }, { id: "warangal", name: "Warangal" }]
+  },
+  {
+    id: "tripura", name: "Tripura", tagline: "Land of Royal Palaces & Rock Cut Carvings",
+    hero_image: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "agartala", name: "Agartala" }, { id: "unakoti", name: "Unakoti" }]
+  },
+  {
+    id: "uttar_pradesh", name: "Uttar Pradesh", tagline: "The Heritage Heartland of India",
+    hero_image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "agra", name: "Agra" }, { id: "varanasi", name: "Varanasi" }, { id: "lucknow", name: "Lucknow" }]
+  },
+  {
+    id: "uttarakhand", name: "Uttarakhand", tagline: "Simply Heaven on Earth (Devbhoomi)",
+    hero_image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "rishikesh", name: "Rishikesh" }, { id: "haridwar", name: "Haridwar" }, { id: "nainital", name: "Nainital" }]
+  },
+  {
+    id: "west_bengal", name: "West Bengal", tagline: "Beautiful Bengal & Sweet Cultural Soul",
+    hero_image: "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=1920&q=80",
+    cities: [{ id: "kolkata", name: "Kolkata" }, { id: "darjeeling", name: "Darjeeling" }]
   }
 ];
 
@@ -86,6 +171,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.7,
     reviews_count: 12450,
     category: "Beach & Heritage",
+    best_view_time: "5:30 PM - 7:00 PM (Sunset & Evening Promenade)",
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
     description: "Scenic coastline featuring the iconic INS Kursura Submarine Museum and vibrant sunset promenades.",
     latitude: 17.7126,
@@ -101,6 +187,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.8,
     reviews_count: 8920,
     category: "Nature & Mountains",
+    best_view_time: "6:00 AM - 9:00 AM (Misty Morning Valleys)",
     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
     description: "Lush hill station renowned for organic coffee plantations, misty valleys, and tribal museum culture.",
     latitude: 18.3273,
@@ -116,6 +203,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.6,
     reviews_count: 6540,
     category: "Heritage & Geological",
+    best_view_time: "10:00 AM - 1:00 PM (Optimal Cave Illumination)",
     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
     description: "One of India's deepest limestone caves featuring naturally formed stalagmites illuminated with vibrant lights.",
     latitude: 18.2804,
@@ -131,6 +219,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.6,
     reviews_count: 9100,
     category: "Panoramic Viewpoint",
+    best_view_time: "5:00 PM - 6:45 PM (Sunset Panoramic Coast Views)",
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
     description: "Hilltop park offering panoramic views of the Bay of Bengal, ropeway rides, and colossal Shiva-Parvati statues.",
     latitude: 17.7492,
@@ -146,6 +235,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.8,
     reviews_count: 34200,
     category: "Heritage Architecture",
+    best_view_time: "6:30 AM - 8:00 AM (Early Sun Lighting Sandstone)",
     image: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80",
     description: "Five-story pink sandstone palace with 953 intricately carved windows (jharokhas) designed for royal breezes.",
     latitude: 26.9239,
@@ -161,6 +251,7 @@ const INITIAL_PLACES: Place[] = [
     rating: 4.9,
     reviews_count: 41200,
     category: "Eco Tourism",
+    best_view_time: "4:00 PM - 6:30 PM (Sunset Houseboat Cruising)",
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
     description: "Tranquil network of lagoons, lakes, and canals navigated by traditional Kettuvallam houseboats.",
     latitude: 9.4981,
@@ -265,32 +356,112 @@ const INITIAL_CULTURE: CultureItem[] = [
 ];
 
 export default function Home() {
-  const [states] = useState<StateData[]>(INITIAL_STATES);
+  const [states, setStates] = useState<StateData[]>(INITIAL_STATES);
   const [selectedState, setSelectedState] = useState<StateData>(INITIAL_STATES[0]);
   const [selectedCityId, setSelectedCityId] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeCategory, setActiveCategory] = useState<string>('places');
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  // Filtered places & foods based on selected state, optional city, and search query
-  const filteredPlaces = INITIAL_PLACES.filter((p) => {
-    const matchesState = p.state_id === selectedState.id;
-    const matchesCity = !selectedCityId || p.city_id === selectedCityId;
+  // Fetch all 28 states dynamically from FastAPI backend on mount
+  useEffect(() => {
+    fetch('http://localhost:8000/api/states')
+      .then(res => res.json())
+      .then((data: StateData[]) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setStates(data);
+          setSelectedState(data[0]);
+        }
+      })
+      .catch(err => console.log('Backend states API offline, using initial list:', err));
+  }, []);
+
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [foods, setFoods] = useState<Food[]>([]);
+  const [culture, setCulture] = useState<CultureItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  // Fetch data from multi-agent API whenever selectedState or selectedCityId changes
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    const params = new URLSearchParams({ state: selectedState.name });
+    if (selectedCityId) {
+      params.append('city', selectedCityId);
+    }
+
+    fetch(`http://localhost:8000/api/v1/search/concurrent?${params.toString()}`)
+      .then(res => res.json())
+      .then(data => {
+        if (isMounted && data.results) {
+          if (data.results.places && data.results.places.length > 0) {
+            setPlaces(data.results.places.map((p: any) => ({
+              id: p.id,
+              state_id: selectedState.id,
+              city_id: p.city ? p.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId,
+              title: p.name,
+              sub_location: `${p.city || selectedState.name}, ${selectedState.name}`,
+              rating: p.rating || 4.5,
+              reviews_count: p.reviews_count || 1200,
+              category: p.category || "Attraction",
+              best_view_time: p.best_view_time || "Morning / Evening",
+              image: p.image_url,
+              description: p.description,
+              latitude: p.latitude || 17.7,
+              longitude: p.longitude || 83.3,
+              tags: p.tags || ["#LocalLens", "#Explore"]
+            })));
+          } else {
+            setPlaces([]);
+          }
+          if (data.results.food && data.results.food.length > 0) {
+            setFoods(data.results.food.map((f: any) => ({
+              id: f.id,
+              state_id: selectedState.id,
+              city_id: f.city ? f.city.toLowerCase().replace(/\s+/g, '_') : selectedCityId,
+              dish_name: f.name,
+              category: f.category || "Local Delicacy",
+              price_inr: f.price_inr || 150,
+              trust_score: f.trust_score || 95,
+              image: f.image_url,
+              review_quote: f.review_quote || "Must-try authentic dish verified by local foodies.",
+              source: f.source || "Local Reviews",
+              tags: f.tags || ["#Authentic", "#LocalSpecialty"]
+            })));
+          } else {
+            setFoods([]);
+          }
+        }
+      })
+      .catch(err => {
+        console.warn('Backend search agent offline, falling back to strict state filter:', err);
+        // Fallback filter strictly by selected state ID
+        setPlaces(INITIAL_PLACES.filter(p => p.state_id === selectedState.id));
+        setFoods(INITIAL_FOODS.filter(f => f.state_id === selectedState.id));
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => { isMounted = false; };
+  }, [selectedState, selectedCityId]);
+
+  // Filter places & foods based on active search query
+  const filteredPlaces = places.filter((p) => {
     const matchesQuery = !searchQuery || 
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
       p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesState && matchesCity && matchesQuery;
+    return matchesQuery;
   });
 
-  const filteredFoods = INITIAL_FOODS.filter((f) => {
-    const matchesState = f.state_id === selectedState.id;
-    const matchesCity = !selectedCityId || f.city_id === selectedCityId;
+  const filteredFoods = foods.filter((f) => {
     const matchesQuery = !searchQuery || 
       f.dish_name.toLowerCase().includes(searchQuery.toLowerCase()) || 
       f.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       f.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesState && matchesCity && matchesQuery;
+    return matchesQuery;
   });
 
   const filteredCulture = INITIAL_CULTURE.filter(c => c.state_id === selectedState.id);
@@ -341,6 +512,15 @@ export default function Home() {
         onSearchQueryChange={(query) => setSearchQuery(query)}
         onSearchSubmit={handleSearchSubmit}
         onQuickFilterClick={handleQuickFilterClick}
+      />
+
+      {/* Real-Time Agent Execution Pipeline Inspector */}
+      <AgentVisualization
+        selectedStateName={selectedState.name}
+        selectedCityId={selectedCityId}
+        loading={loading}
+        placesCount={places.length}
+        foodsCount={foods.length}
       />
 
       {/* Quick Interactive Category Cards */}

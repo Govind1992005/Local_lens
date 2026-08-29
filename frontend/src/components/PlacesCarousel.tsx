@@ -121,10 +121,19 @@ export const PlacesCarousel: React.FC<PlacesCarouselProps> = ({
                     <h3 className="font-serif text-lg font-bold text-[#1C1310] group-hover:text-[#FF6A4D] transition-colors line-clamp-1">
                       {place.title}
                     </h3>
-                    <div className="flex items-center space-x-1 text-xs text-gray-500 mt-1 mb-3">
+                    <div className="flex items-center space-x-1 text-xs text-gray-500 mt-1 mb-2">
                       <MapPin className="w-3.5 h-3.5 text-[#FF6A4D]" />
                       <span className="truncate">{place.sub_location}</span>
                     </div>
+
+                    {/* Best View Time Badge */}
+                    {place.best_view_time && (
+                      <div className="bg-[#FAF8F5] border border-amber-200/60 rounded-lg p-2 mb-3">
+                        <span className="block text-[10px] uppercase font-bold text-[#D8A657]">Best Time to Visit:</span>
+                        <span className="text-xs font-semibold text-gray-800">{place.best_view_time}</span>
+                      </div>
+                    )}
+
                     <p className="text-xs text-gray-600 line-clamp-2 leading-relaxed font-light">
                       {place.description}
                     </p>

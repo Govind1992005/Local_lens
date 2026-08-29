@@ -1,66 +1,254 @@
 """
-LocalLens Backend Mock Database & Sample Dataset
-Includes Indian states, cities, famous places, authentic foods with trust scores, and cultural traditions.
+LocalLens Comprehensive Dataset
+Covers all 28 Indian States with dedicated cities, iconic places, authentic local foods (with Trust Scores & prices in INR), and cultural traditions.
 """
 
 STATES_DATA = {
     "andhra_pradesh": {
-        "id": "andhra_pradesh",
-        "name": "Andhra Pradesh",
-        "tagline": "The Sunrise State of India",
-        "hero_image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80", # Visakhapatnam Coastal Beach / Bay
+        "id": "andhra_pradesh", "name": "Andhra Pradesh", "tagline": "The Sunrise State of India",
+        "hero_image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
         "cities": [
             {"id": "visakhapatnam", "name": "Visakhapatnam (Vizag)"},
             {"id": "araku", "name": "Araku Valley"},
             {"id": "vijayawada", "name": "Vijayawada"},
-            {"id": "tirupati", "name": "Tirupati"}
+            {"id": "tirupati", "name": "Tirupati"},
+            {"id": "guntur", "name": "Guntur"},
+            {"id": "kakinada", "name": "Kakinada"},
+            {"id": "kurnool", "name": "Kurnool"},
+            {"id": "rajahmundry", "name": "Rajahmundry"}
         ]
     },
-    "rajasthan": {
-        "id": "rajasthan", "name": "Rajasthan",
-        "tagline": "The Land of Kings & Palaces",
-        "hero_image": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80", # Hawa Mahal / Jaipur Fort
+    "arunachal_pradesh": {
+        "id": "arunachal_pradesh", "name": "Arunachal Pradesh", "tagline": "Land of the Dawn-Lit Mountains",
+        "hero_image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
         "cities": [
-            {"id": "jaipur", "name": "Jaipur"},
-            {"id": "udaipur", "name": "Udaipur"},
-            {"id": "jaisalmer", "name": "Jaisalmer"},
-            {"id": "jodhpur", "name": "Jodhpur"}
+            {"id": "tawang", "name": "Tawang"},
+            {"id": "itanagar", "name": "Itanagar"},
+            {"id": "ziro", "name": "Ziro Valley"}
+        ]
+    },
+    "assam": {
+        "id": "assam", "name": "Assam", "tagline": "Land of Blue Hills & Red River",
+        "hero_image": "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "guwahati", "name": "Guwahati"},
+            {"id": "kaziranga", "name": "Kaziranga"},
+            {"id": "jorhat", "name": "Jorhat"}
+        ]
+    },
+    "bihar": {
+        "id": "bihar", "name": "Bihar", "tagline": "Blissful Land of Enlightenment & Heritage",
+        "hero_image": "https://images.unsplash.com/photo-1622308644420-b20142dc993c?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "patna", "name": "Patna"},
+            {"id": "gaya", "name": "Bodh Gaya"},
+            {"id": "nalanda", "name": "Nalanda"}
+        ]
+    },
+    "chhattisgarh": {
+        "id": "chhattisgarh", "name": "Chhattisgarh", "tagline": "Full of Surprises & Majestic Waterfalls",
+        "hero_image": "https://images.unsplash.com/photo-1617854818583-09e7f077a156?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "raipur", "name": "Raipur"},
+            {"id": "jagdalpur", "name": "Jagdalpur"}
+        ]
+    },
+    "goa": {
+        "id": "goa", "name": "Goa", "tagline": "A Pearl of the Orient & Sun-Kissed Coasts",
+        "hero_image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "panaji", "name": "Panaji"},
+            {"id": "calangute", "name": "Calangute"},
+            {"id": "margao", "name": "Margao"}
+        ]
+    },
+    "gujarat": {
+        "id": "gujarat", "name": "Gujarat", "tagline": "Land of Legends & White Desert",
+        "hero_image": "https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "ahmedabad", "name": "Ahmedabad"},
+            {"id": "kutch", "name": "Rann of Kutch"},
+            {"id": "surat", "name": "Surat"}
+        ]
+    },
+    "haryana": {
+        "id": "haryana", "name": "Haryana", "tagline": "A Land of Milk, Ghee & Epic History",
+        "hero_image": "https://images.unsplash.com/photo-1588096344356-9b589415c899?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "gurugram", "name": "Gurugram"},
+            {"id": "kurukshetra", "name": "Kurukshetra"}
+        ]
+    },
+    "himachal_pradesh": {
+        "id": "himachal_pradesh", "name": "Himachal Pradesh", "tagline": "Land of Gods & Snow-Capped Peaks",
+        "hero_image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "shimla", "name": "Shimla"},
+            {"id": "manali", "name": "Manali"},
+            {"id": "dharamshala", "name": "Dharamshala"}
+        ]
+    },
+    "jharkhand": {
+        "id": "jharkhand", "name": "Jharkhand", "tagline": "The Land of Forests & Waterfalls",
+        "hero_image": "https://images.unsplash.com/photo-1607583449132-70b54e7d488e?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "ranchi", "name": "Ranchi"},
+            {"id": "jamshedpur", "name": "Jamshedpur"}
+        ]
+    },
+    "karnataka": {
+        "id": "karnataka", "name": "Karnataka", "tagline": "One State, Many Worlds",
+        "hero_image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "bengaluru", "name": "Bengaluru"},
+            {"id": "mysuru", "name": "Mysuru"},
+            {"id": "hampi", "name": "Hampi"},
+            {"id": "coorg", "name": "Coorg"}
         ]
     },
     "kerala": {
-        "id": "kerala",
-        "name": "Kerala",
-        "tagline": "God's Own Country",
-        "hero_image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80", # Kerala Backwaters
+        "id": "kerala", "name": "Kerala", "tagline": "God's Own Country",
+        "hero_image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80",
         "cities": [
-            {"id": "alleppey", "name": "Alleppey (Alappuzha)"},
+            {"id": "alleppey", "name": "Alleppey"},
             {"id": "munnar", "name": "Munnar"},
             {"id": "kochi", "name": "Kochi"},
             {"id": "varkala", "name": "Varkala"}
         ]
     },
+    "madhya_pradesh": {
+        "id": "madhya_pradesh", "name": "Madhya Pradesh", "tagline": "The Heart of Incredible India",
+        "hero_image": "https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "indore", "name": "Indore"},
+            {"id": "bhopal", "name": "Bhopal"},
+            {"id": "khajuraho", "name": "Khajuraho"}
+        ]
+    },
     "maharashtra": {
-        "id": "maharashtra",
-        "name": "Maharashtra",
-        "tagline": "Unlimited Gateway to Heritage & Energy",
-        "hero_image": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1920&q=80", # Gateway of India / Marine Drive
+        "id": "maharashtra", "name": "Maharashtra", "tagline": "Unlimited Gateway to Heritage & Energy",
+        "hero_image": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1920&q=80",
         "cities": [
             {"id": "mumbai", "name": "Mumbai"},
             {"id": "pune", "name": "Pune"},
-            {"id": "nashik", "name": "Nashik"},
-            {"id": "aurangabad", "name": "Chhatrapati Sambhajinagar"}
+            {"id": "nashik", "name": "Nashik"}
+        ]
+    },
+    "manipur": {
+        "id": "manipur", "name": "Manipur", "tagline": "Jewel of India & Floating Lake Marvels",
+        "hero_image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "imphal", "name": "Imphal"},
+            {"id": "loktak", "name": "Loktak Lake"}
+        ]
+    },
+    "meghalaya": {
+        "id": "meghalaya", "name": "Meghalaya", "tagline": "Abode of Clouds & Living Root Bridges",
+        "hero_image": "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "shillong", "name": "Shillong"},
+            {"id": "cherrapunji", "name": "Cherrapunji"}
+        ]
+    },
+    "mizoram": {
+        "id": "mizoram", "name": "Mizoram", "tagline": "Land of Rolling Hills & Serene Valleys",
+        "hero_image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "aizawl", "name": "Aizawl"},
+            {"id": "lunglei", "name": "Lunglei"}
+        ]
+    },
+    "nagaland": {
+        "id": "nagaland", "name": "Nagaland", "tagline": "Land of Festivals & Vibrant Heritage",
+        "hero_image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "kohima", "name": "Kohima"},
+            {"id": "dimapur", "name": "Dimapur"}
+        ]
+    },
+    "odisha": {
+        "id": "odisha", "name": "Odisha", "tagline": "India's Best Kept Secret & Golden Sands",
+        "hero_image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "puri", "name": "Puri"},
+            {"id": "bhubaneswar", "name": "Bhubaneswar"},
+            {"id": "konark", "name": "Konark"}
+        ]
+    },
+    "punjab": {
+        "id": "punjab", "name": "Punjab", "tagline": "Land of Five Rivers & Golden Warmth",
+        "hero_image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "amritsar", "name": "Amritsar"},
+            {"id": "ludhiana", "name": "Ludhiana"}
+        ]
+    },
+    "rajasthan": {
+        "id": "rajasthan", "name": "Rajasthan", "tagline": "The Land of Kings & Palaces",
+        "hero_image": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "jaipur", "name": "Jaipur"},
+            {"id": "udaipur", "name": "Udaipur"},
+            {"id": "jaisalmer", "name": "Jaisalmer"}
+        ]
+    },
+    "sikkim": {
+        "id": "sikkim", "name": "Sikkim", "tagline": "Small State, Big Heart & Majestic Kanchenjunga",
+        "hero_image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "gangtok", "name": "Gangtok"},
+            {"id": "pelling", "name": "Pelling"}
         ]
     },
     "tamil_nadu": {
-        "id": "tamil_nadu",
-        "name": "Tamil Nadu",
-        "tagline": "Land of Temples & Dravidian Heritage",
-        "hero_image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80", # Meenakshi Temple / Chennai Beach
+        "id": "tamil_nadu", "name": "Tamil Nadu", "tagline": "Land of Temples & Dravidian Heritage",
+        "hero_image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1920&q=80",
         "cities": [
             {"id": "chennai", "name": "Chennai"},
             {"id": "madurai", "name": "Madurai"},
-            {"id": "ooty", "name": "Ooty"},
-            {"id": "thanjavur", "name": "Thanjavur"}
+            {"id": "ooty", "name": "Ooty"}
+        ]
+    },
+    "telangana": {
+        "id": "telangana", "name": "Telangana", "tagline": "The Seed State of Innovation & Pearl City",
+        "hero_image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "hyderabad", "name": "Hyderabad"},
+            {"id": "warangal", "name": "Warangal"}
+        ]
+    },
+    "tripura": {
+        "id": "tripura", "name": "Tripura", "tagline": "Land of Royal Palaces & Rock Cut Carvings",
+        "hero_image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "agartala", "name": "Agartala"},
+            {"id": "unakoti", "name": "Unakoti"}
+        ]
+    },
+    "uttar_pradesh": {
+        "id": "uttar_pradesh", "name": "Uttar Pradesh", "tagline": "The Heritage Heartland of India",
+        "hero_image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "agra", "name": "Agra"},
+            {"id": "varanasi", "name": "Varanasi"},
+            {"id": "lucknow", "name": "Lucknow"}
+        ]
+    },
+    "uttarakhand": {
+        "id": "uttarakhand", "name": "Uttarakhand", "tagline": "Simply Heaven on Earth (Devbhoomi)",
+        "hero_image": "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "rishikesh", "name": "Rishikesh"},
+            {"id": "haridwar", "name": "Haridwar"},
+            {"id": "nainital", "name": "Nainital"}
+        ]
+    },
+    "west_bengal": {
+        "id": "west_bengal", "name": "West Bengal", "tagline": "Beautiful Bengal & Sweet Cultural Soul",
+        "hero_image": "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=1920&q=80",
+        "cities": [
+            {"id": "kolkata", "name": "Kolkata"},
+            {"id": "darjeeling", "name": "Darjeeling"}
         ]
     }
 }
@@ -68,339 +256,415 @@ STATES_DATA = {
 PLACES_DATA = [
     # Andhra Pradesh
     {
-        "id": "rk-beach",
-        "state_id": "andhra_pradesh",
-        "city_id": "visakhapatnam",
-        "title": "RK Beach & Submarine Museum",
-        "sub_location": "Beach Road, Visakhapatnam",
-        "rating": 4.7,
-        "reviews_count": 12450,
-        "category": "Beach & Heritage",
+        "id": "rk-beach", "state_id": "andhra_pradesh", "city_id": "visakhapatnam",
+        "title": "RK Beach & Submarine Museum", "sub_location": "Beach Road, Visakhapatnam",
+        "rating": 4.7, "reviews_count": 12450, "category": "Beach & Heritage",
+        "best_view_time": "5:30 PM - 7:00 PM (Sunset & Evening Promenade)",
         "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
-        "description": "Scenic coastline featuring the iconic INS Kursura Submarine Museum and vibrant sunset promenades.",
-        "latitude": 17.7126,
-        "longitude": 83.3188,
-        "tags": ["#CoastalViews", "#Beach", "#Museum"]
+        "description": "Scenic coastline featuring INS Kursura Submarine Museum.", "latitude": 17.7126, "longitude": 83.3188, "tags": ["#CoastalViews", "#Beach"]
     },
     {
-        "id": "araku-valley",
-        "state_id": "andhra_pradesh",
-        "city_id": "araku",
-        "title": "Araku Valley Coffee Plantations",
-        "sub_location": "Eastern Ghats, Araku",
-        "rating": 4.8,
-        "reviews_count": 8920,
-        "category": "Nature & Mountains",
+        "id": "araku-valley", "state_id": "andhra_pradesh", "city_id": "araku",
+        "title": "Araku Valley Coffee Plantations", "sub_location": "Eastern Ghats, Araku",
+        "rating": 4.8, "reviews_count": 8920, "category": "Nature & Mountains",
+        "best_view_time": "6:00 AM - 9:00 AM (Misty Morning Valleys)",
         "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
-        "description": "Lush hill station renowned for organic coffee plantations, misty valleys, and tribal museum culture.",
-        "latitude": 18.3273,
-        "longitude": 82.8775,
-        "tags": ["#MistyHills", "#CoffeePlantation", "#Nature"]
+        "description": "Lush hill station renowned for organic coffee plantations.", "latitude": 18.3273, "longitude": 82.8775, "tags": ["#MistyHills", "#Coffee"]
     },
     {
-        "id": "borra-caves",
-        "state_id": "andhra_pradesh",
-        "city_id": "araku",
-        "title": "Borra Stalactite Caves",
-        "sub_location": "Ananthagiri Hills, Araku",
-        "rating": 4.6,
-        "reviews_count": 6540,
-        "category": "Heritage & Geological",
+        "id": "kanaka-durga", "state_id": "andhra_pradesh", "city_id": "vijayawada",
+        "title": "Kanaka Durga Temple", "sub_location": "Indrakeeladri Hill, Vijayawada",
+        "rating": 4.9, "reviews_count": 28400, "category": "Spiritual Pilgrimage",
+        "best_view_time": "6:00 AM - 8:00 AM (Morning Darshan & Krishna River View)",
+        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "description": "Sacred hilltop temple overlooking the Krishna River.", "latitude": 16.5186, "longitude": 80.6092, "tags": ["#Temple", "#Heritage"]
+    },
+    {
+        "id": "tirumala-temple", "state_id": "andhra_pradesh", "city_id": "tirupati",
+        "title": "Tirumala Venkateswara Temple", "sub_location": "Tirumala Hills, Tirupati",
+        "rating": 4.9, "reviews_count": 85000, "category": "World Famous Pilgrimage",
+        "best_view_time": "3:00 AM - 6:00 AM (Suprabhatam Darshan)",
+        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "description": "World's most visited sacred hill shrine nestled in Seshachalam hills.", "latitude": 13.6833, "longitude": 79.3472, "tags": ["#Tirupati", "#Devotional"]
+    },
+    {
+        "id": "uppada-beach", "state_id": "andhra_pradesh", "city_id": "kakinada",
+        "title": "Uppada Beach & Weaving Village", "sub_location": "Uppada Road, Kakinada",
+        "rating": 4.6, "reviews_count": 5200, "category": "Scenic Coast & Silk Heritage",
+        "best_view_time": "5:00 PM - 6:30 PM (Sunset & Sea Breeze)",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "description": "Pristine beach famous for handcrafted Jamdani silk sarees and fresh seafood.", "latitude": 17.0863, "longitude": 82.3278, "tags": ["#UppadaBeach", "#Kakinada"]
+    },
+    {
+        "id": "kotappakonda", "state_id": "andhra_pradesh", "city_id": "guntur",
+        "title": "Kotappakonda Trikoteswara Temple", "sub_location": "Narasaraopet, Guntur",
+        "rating": 4.7, "reviews_count": 4100, "category": "Hill Shrine",
+        "best_view_time": "7:00 AM - 10:00 AM (Morning Breeze)",
         "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
-        "description": "One of India's deepest limestone caves featuring naturally formed stalagmites illuminated with vibrant lights.",
-        "latitude": 18.2804,
-        "longitude": 83.0396,
-        "tags": ["#Geology", "#Caves", "#Adventure"]
+        "description": "Revered three-peaked hill temple dedicated to Lord Shiva.", "latitude": 16.1415, "longitude": 80.0526, "tags": ["#Guntur", "#Spiritual"]
     },
     {
-        "id": "kailasagiri",
-        "state_id": "andhra_pradesh",
-        "city_id": "visakhapatnam",
-        "title": "Kailasagiri Hilltop Park",
-        "sub_location": "Hill Top Road, Visakhapatnam",
-        "rating": 4.6,
-        "reviews_count": 9100,
-        "category": "Panoramic Viewpoint",
+        "id": "orvakal-rock-garden", "state_id": "andhra_pradesh", "city_id": "kurnool",
+        "title": "Orvakal Rock Garden", "sub_location": "NH 44, Kurnool",
+        "rating": 4.5, "reviews_count": 3200, "category": "Geological Wonder",
+        "best_view_time": "4:00 PM - 6:00 PM (Sunset Rock Formations)",
         "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-        "description": "Hilltop park offering panoramic views of the Bay of Bengal, ropeway rides, and colossal Shiva-Parvati statues.",
-        "latitude": 17.7492,
-        "longitude": 83.3422,
-        "tags": ["#PanoramicViews", "#Ropeway", "#Park"]
-    },
-    # Rajasthan
-    {
-        "id": "hawa-mahal",
-        "state_id": "rajasthan",
-        "city_id": "jaipur",
-        "title": "Hawa Mahal (Palace of Winds)",
-        "sub_location": "Pink City, Jaipur",
-        "rating": 4.8,
-        "reviews_count": 34200,
-        "category": "Heritage Architecture",
-        "image": "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80",
-        "description": "Five-story pink sandstone palace with 953 intricately carved windows (jharokhas) designed for royal breezes.",
-        "latitude": 26.9239,
-        "longitude": 75.8267,
-        "tags": ["#HeritageTemples", "#Architecture", "#PinkCity"]
+        "description": "300-acre park with natural quartz and silica rock formations around a lake.", "latitude": 15.6888, "longitude": 78.2045, "tags": ["#Kurnool", "#Rocks"]
     },
     {
-        "id": "city-palace-udaipur",
-        "state_id": "rajasthan",
-        "city_id": "udaipur",
-        "title": "Udaipur City Palace & Lake Pichola",
-        "sub_location": "Lake Pichola, Udaipur",
-        "rating": 4.9,
-        "reviews_count": 28900,
-        "category": "Palace & Lakes",
-        "image": "https://images.unsplash.com/photo-1615836245337-f5b9b2303f1c?auto=format&fit=crop&w=800&q=80",
-        "description": "Majestic palace complex built over 400 years overlooking the serene waters of Lake Pichola.",
-        "latitude": 24.5764,
-        "longitude": 73.6835,
-        "tags": ["#Palace", "#LakeViews", "#Royalty"]
+        "id": "godavari-arch-bridge", "state_id": "andhra_pradesh", "city_id": "rajahmundry",
+        "title": "Godavari Arch Bridge & Pushkar Ghat", "sub_location": "Godavari River, Rajahmundry",
+        "rating": 4.8, "reviews_count": 9100, "category": "River Heritage",
+        "best_view_time": "5:30 PM - 7:15 PM (Evening Godavari Aarti & Train View)",
+        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        "description": "Engineering marvel spanning the mighty Godavari River with scenic ghats.", "latitude": 17.0005, "longitude": 81.7774, "tags": ["#Godavari", "#Rajahmundry"]
     },
-    # Kerala
+
+    # Arunachal Pradesh
     {
-        "id": "alleppey-backwaters",
-        "state_id": "kerala",
-        "city_id": "alleppey",
-        "title": "Alleppey Houseboat Backwaters",
-        "sub_location": "Punnamada Lake, Alleppey",
-        "rating": 4.9,
-        "reviews_count": 41200,
-        "category": "Eco Tourism & Cruising",
-        "image": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
-        "description": "Tranquil network of lagoons, lakes, and canals navigated by traditional Kettuvallam houseboats.",
-        "latitude": 9.4981,
-        "longitude": 76.3388,
-        "tags": ["#Backwaters", "#Houseboat", "#Serene"]
+        "id": "tawang-monastery", "state_id": "arunachal_pradesh", "city_id": "tawang",
+        "title": "Tawang Buddhist Monastery", "sub_location": "Tawang Hill, Tawang",
+        "rating": 4.9, "reviews_count": 11200, "category": "Buddhist Heritage",
+        "best_view_time": "6:00 AM - 8:30 AM (Morning Monks Chanting)",
+        "image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80",
+        "description": "India's largest Buddhist monastery perched at 10,000 feet.", "latitude": 27.5861, "longitude": 91.8594, "tags": ["#Tawang", "#Monastery"]
     },
     {
-        "id": "tea-gardens-munnar",
-        "state_id": "kerala",
-        "city_id": "munnar",
-        "title": "Munnar Tea Estates & Mattupetty",
-        "sub_location": "Kannan Devan Hills, Munnar",
-        "rating": 4.8,
-        "reviews_count": 18500,
-        "category": "Nature & Plantation",
-        "image": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
-        "description": "Endless rolling green tea plantations nestled high in the Western Ghats with cool mountain breeze.",
-        "latitude": 10.0889,
-        "longitude": 77.0595,
-        "tags": ["#TeaEstates", "#Greenery", "#Hills"]
+        "id": "ita-fort", "state_id": "arunachal_pradesh", "city_id": "itanagar",
+        "title": "Ita Fort & Indira Gandhi Park", "sub_location": "Capital Complex, Itanagar",
+        "rating": 4.5, "reviews_count": 2900, "category": "Historical Fort",
+        "best_view_time": "3:30 PM - 5:30 PM (Sunset City Views)",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "description": "14th-century brick fort that gave Itanagar its name.", "latitude": 27.0844, "longitude": 93.6053, "tags": ["#Itanagar", "#Fort"]
     },
+    {
+        "id": "ziro-music-valley", "state_id": "arunachal_pradesh", "city_id": "ziro",
+        "title": "Ziro Valley Rice Meadows", "sub_location": "Lower Subansiri, Ziro Valley",
+        "rating": 4.8, "reviews_count": 4800, "category": "UNESCO Tribal Landscape",
+        "best_view_time": "6:30 AM - 9:30 AM (Morning Mist over Pine Hills)",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "description": "Picturesque valley home to Apatani tribe and famous outdoor music festival.", "latitude": 27.5922, "longitude": 93.8383, "tags": ["#Ziro", "#Apatani"]
+    },
+
+    # Assam
+    {
+        "id": "kamakhya-temple", "state_id": "assam", "city_id": "guwahati",
+        "title": "Kamakhya Devi Temple", "sub_location": "Nilachal Hill, Guwahati",
+        "rating": 4.8, "reviews_count": 42000, "category": "Shakti Peeth Shrine",
+        "best_view_time": "5:30 AM - 8:00 AM (Early Morning Darshan)",
+        "image": "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=800&q=80",
+        "description": "Ancient tantric Shakti Peeth temple perched atop Nilachal Hill.", "latitude": 26.1664, "longitude": 91.7042, "tags": ["#Kamakhya", "#Guwahati"]
+    },
+    {
+        "id": "kaziranga-park", "state_id": "assam", "city_id": "kaziranga",
+        "title": "Kaziranga Rhino National Park", "sub_location": "Bokakhat, Kaziranga",
+        "rating": 4.9, "reviews_count": 31000, "category": "Wildlife Safari",
+        "best_view_time": "5:30 AM - 9:00 AM (Elephant & Jeep Safari)",
+        "image": "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=800&q=80",
+        "description": "UNESCO World Heritage sanctuary housing 2/3rd of world's one-horned rhinos.", "latitude": 26.5775, "longitude": 93.1711, "tags": ["#Rhino", "#Kaziranga"]
+    },
+    {
+        "id": "majuli-island", "state_id": "assam", "city_id": "jorhat",
+        "title": "Majuli River Island & Satras", "sub_location": "Brahmaputra River, Jorhat",
+        "rating": 4.8, "reviews_count": 8900, "category": "River Island Heritage",
+        "best_view_time": "4:30 PM - 6:00 PM (Brahmaputra Sunset Ferry)",
+        "image": "https://images.unsplash.com/photo-1608755728617-aefab37d2edd?auto=format&fit=crop&w=800&q=80",
+        "description": "World's largest inhabited river island renowned for Vaishnavite Satras.", "latitude": 26.9500, "longitude": 94.1667, "tags": ["#Majuli", "#Island"]
+    },
+
+    # Bihar
+    {
+        "id": "mahabodhi-temple", "state_id": "bihar", "city_id": "gaya",
+        "title": "Mahabodhi Temple & Bodhi Tree", "sub_location": "Main Road, Bodh Gaya",
+        "rating": 4.9, "reviews_count": 38000, "category": "UNESCO Sacred Site",
+        "best_view_time": "5:00 AM - 7:00 AM (Peaceful Dawn Meditation)",
+        "image": "https://images.unsplash.com/photo-1622308644420-b20142dc993c?auto=format&fit=crop&w=800&q=80",
+        "description": "Sacred complex where Lord Buddha attained enlightenment under Bodhi Tree.", "latitude": 24.6960, "longitude": 84.9914, "tags": ["#BodhGaya", "#Buddha"]
+    },
+    {
+        "id": "golghar-patna", "state_id": "bihar", "city_id": "patna",
+        "title": "Golghar Granary & Ganga Ghat", "sub_location": "Gandhi Maidan, Patna",
+        "rating": 4.5, "reviews_count": 14200, "category": "Colonial Landmark",
+        "best_view_time": "5:00 PM - 6:30 PM (Panoramic Patna City View)",
+        "image": "https://images.unsplash.com/photo-1622308644420-b20142dc993c?auto=format&fit=crop&w=800&q=80",
+        "description": "Beehive-shaped 1786 granary offering panoramic views of Patna and Ganga.", "latitude": 25.6207, "longitude": 85.1401, "tags": ["#Patna", "#Golghar"]
+    },
+    {
+        "id": "nalanda-university", "state_id": "bihar", "city_id": "nalanda",
+        "title": "Ancient Nalanda University Ruins", "sub_location": "Rajgir Highway, Nalanda",
+        "rating": 4.8, "reviews_count": 19500, "category": "Ancient Learning Seat",
+        "best_view_time": "8:30 AM - 11:00 AM (Morning Guided Walk)",
+        "image": "https://images.unsplash.com/photo-1622308644420-b20142dc993c?auto=format&fit=crop&w=800&q=80",
+        "description": "5th-century ancient monastic university ruins spanning red brick stupas.", "latitude": 25.1357, "longitude": 85.4446, "tags": ["#Nalanda", "#Ancient"]
+    },
+
+    # Goa
+    {
+        "id": "fontainhas-panaji", "state_id": "goa", "city_id": "panaji",
+        "title": "Fontainhas Latin Quarter", "sub_location": "Altinho, Panaji",
+        "rating": 4.7, "reviews_count": 18200, "category": "Portuguese Heritage",
+        "best_view_time": "8:00 AM - 10:30 AM (Morning Photo Walk)",
+        "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
+        "description": "Colorful Portuguese-style villas, narrow winding streets, and art cafes.", "latitude": 15.4989, "longitude": 73.8278, "tags": ["#Panaji", "#LatinQuarter"]
+    },
+    {
+        "id": "calangute-beach", "state_id": "goa", "city_id": "calangute",
+        "title": "Calangute Beach & Water Sports", "sub_location": "North Goa Coast, Calangute",
+        "rating": 4.6, "reviews_count": 48000, "category": "Queen of Beaches",
+        "best_view_time": "4:30 PM - 7:00 PM (Sunset Beach Vibes)",
+        "image": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
+        "description": "Goa's largest beach bustling with parasailing, shacks, and golden sands.", "latitude": 15.5442, "longitude": 73.7550, "tags": ["#Calangute", "#GoaBeach"]
+    },
+
+    # Gujarat
+    {
+        "id": "sabarmati-ashram", "state_id": "gujarat", "city_id": "ahmedabad",
+        "title": "Sabarmati Ashram", "sub_location": "Ashram Road, Ahmedabad",
+        "rating": 4.8, "reviews_count": 32000, "category": "Freedom Heritage",
+        "best_view_time": "8:30 AM - 10:30 AM (Serene Sabarmati Riverfront)",
+        "image": "https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=800&q=80",
+        "description": "Mahatma Gandhi's tranquil headquarters during Indian independence movement.", "latitude": 23.0602, "longitude": 72.5807, "tags": ["#Gandhi", "#Ahmedabad"]
+    },
+    {
+        "id": "white-rann-kutch", "state_id": "gujarat", "city_id": "kutch",
+        "title": "White Rann Salt Desert", "sub_location": "Dhordo, Rann of Kutch",
+        "rating": 4.9, "reviews_count": 27000, "category": "Salt Desert Landscape",
+        "best_view_time": "5:30 PM - 7:30 PM (Full Moon & Sunset Salt Glow)",
+        "image": "https://images.unsplash.com/photo-1609949279531-cf48d64bed89?auto=format&fit=crop&w=800&q=80",
+        "description": "Vast endless white salt desert offering breathtaking sunset and moonlit vistas.", "latitude": 23.7816, "longitude": 69.5100, "tags": ["#WhiteRann", "#Kutch"]
+    },
+
+    # Karnataka
+    {
+        "id": "bangalore-palace", "state_id": "karnataka", "city_id": "bengaluru",
+        "title": "Bangalore Palace & Cubbon Park", "sub_location": "Vasanth Nagar, Bengaluru",
+        "rating": 4.6, "reviews_count": 38000, "category": "Tudor Architecture",
+        "best_view_time": "10:00 AM - 1:00 PM (Garden & Palace Audio Tour)",
+        "image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=800&q=80",
+        "description": "19th-century royal palace modeled after England's Windsor Castle.", "latitude": 12.9988, "longitude": 77.5921, "tags": ["#Bengaluru", "#Palace"]
+    },
+    {
+        "id": "hampi-boulder-ruins", "state_id": "karnataka", "city_id": "hampi",
+        "title": "Virupaksha Temple & Hampi Ruins", "sub_location": "Tungabhadra River, Hampi",
+        "rating": 4.9, "reviews_count": 45000, "category": "UNESCO World Heritage",
+        "best_view_time": "5:30 AM - 7:30 AM (Matanga Hill Sunrise)",
+        "image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=800&q=80",
+        "description": "14th-century Vijayanagara Empire stone temples and surreal boulder hills.", "latitude": 15.3350, "longitude": 76.4600, "tags": ["#Hampi", "#Vijayanagara"]
+    },
+
     # Maharashtra
     {
-        "id": "marine-drive",
-        "state_id": "maharashtra",
-        "city_id": "mumbai",
-        "title": "Marine Drive & Queen's Necklace",
-        "sub_location": "South Mumbai, Mumbai",
-        "rating": 4.8,
-        "reviews_count": 52100,
-        "category": "Urban Promenade",
+        "id": "gateway-of-india", "state_id": "maharashtra", "city_id": "mumbai",
+        "title": "Gateway of India & Taj Mahal Palace", "sub_location": "Colaba, Mumbai",
+        "rating": 4.8, "reviews_count": 92000, "category": "Iconic Waterfront",
+        "best_view_time": "5:30 PM - 7:30 PM (Sunset Arabian Sea View)",
         "image": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=800&q=80",
-        "description": "3.6 km long C-shaped boulevard along the Arabian Sea coast, famous for sparkling evening lights.",
-        "latitude": 18.9438,
-        "longitude": 72.8230,
-        "tags": ["#CoastalViews", "#Sunset", "#CityLights"]
+        "description": "Basalt arch monument built overlooking Mumbai harbor in 1924.", "latitude": 18.9220, "longitude": 72.8347, "tags": ["#Mumbai", "#Gateway"]
     },
+    {
+        "id": "shaniwar-wada", "state_id": "maharashtra", "city_id": "pune",
+        "title": "Shaniwar Wada Fort", "sub_location": "Shaniwar Peth, Pune",
+        "rating": 4.5, "reviews_count": 28000, "category": "Peshwa Citadel",
+        "best_view_time": "6:00 PM - 7:15 PM (Light & Sound Show)",
+        "image": "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=800&q=80",
+        "description": "Historic 1732 seat of the Peshwa rulers of the Maratha Empire.", "latitude": 18.5196, "longitude": 73.8553, "tags": ["#Pune", "#Maratha"]
+    },
+
+    # Punjab
+    {
+        "id": "golden-temple", "state_id": "punjab", "city_id": "amritsar",
+        "title": "Sri Harmandir Sahib (Golden Temple)", "sub_location": "Golden Temple Road, Amritsar",
+        "rating": 4.9, "reviews_count": 105000, "category": "Sacred Golden Shrine",
+        "best_view_time": "4:00 AM - 6:00 AM (Prakash Ceremony & Night Reflection)",
+        "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+        "description": "Spiritual seat of Sikhism adorned with gold foil around holy Amrit Sarovar.", "latitude": 31.6200, "longitude": 74.8765, "tags": ["#Amritsar", "#GoldenTemple"]
+    },
+
     # Tamil Nadu
     {
-        "id": "meenakshi-temple",
-        "state_id": "tamil_nadu",
-        "city_id": "madurai",
-        "title": "Madurai Meenakshi Amman Temple",
-        "sub_location": "Grand Bazaar, Madurai",
-        "rating": 4.9,
-        "reviews_count": 38900,
-        "category": "Spiritual Heritage",
+        "id": "marina-beach", "state_id": "tamil_nadu", "city_id": "chennai",
+        "title": "Marina Promenade Beach", "sub_location": "Kamharajar Salai, Chennai",
+        "rating": 4.6, "reviews_count": 52000, "category": "Longest Urban Beach",
+        "best_view_time": "5:30 AM - 7:00 AM (Sunrise over Bay of Bengal)",
         "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
-        "description": "Ancient Dravidian architectural marvel featuring 14 towering gopurams decorated with thousands of colorful sculptures.",
-        "latitude": 9.9195,
-        "longitude": 78.1193,
-        "tags": ["#HeritageTemples", "#Spiritual", "#Dravidian"]
+        "description": "India's longest natural urban beach stretching 13 km with lighthouse.", "latitude": 13.0499, "longitude": 80.2824, "tags": ["#Chennai", "#Marina"]
+    },
+
+    # Telangana
+    {
+        "id": "charminar", "state_id": "telangana", "city_id": "hyderabad",
+        "title": "Charminar & Laad Bazaar", "sub_location": "Old City, Hyderabad",
+        "rating": 4.8, "reviews_count": 54200, "category": "Heritage Monument",
+        "best_view_time": "6:30 PM - 9:00 PM (Illuminated Heritage View)",
+        "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+        "description": "16th-century iconic mosque with four grand arches in historic Hyderabad.", "latitude": 17.3616, "longitude": 78.4747, "tags": ["#Charminar", "#Hyderabad"]
+    },
+
+    # Uttar Pradesh
+    {
+        "id": "taj-mahal", "state_id": "uttar_pradesh", "city_id": "agra",
+        "title": "Taj Mahal", "sub_location": "Dharmapuri, Agra",
+        "rating": 4.9, "reviews_count": 98400, "category": "Wonder of the World",
+        "best_view_time": "5:45 AM - 7:30 AM (Sunrise Soft Golden Glow)",
+        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+        "description": "Ivory-white marble mausoleum on the south bank of Yamuna river.", "latitude": 27.1751, "longitude": 78.0421, "tags": ["#TajMahal", "#Agra"]
+    },
+    {
+        "id": "dashashwamedh-ghat", "state_id": "uttar_pradesh", "city_id": "varanasi",
+        "title": "Dashashwamedh Ghat & Ganga Aarti", "sub_location": "Holy Ganges, Varanasi",
+        "rating": 4.9, "reviews_count": 62000, "category": "Sacred Ghat",
+        "best_view_time": "6:00 PM - 7:30 PM (Grand Evening Ganga Aarti)",
+        "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80",
+        "description": "Varanasi's main riverfront ghat famous for ritualistic oil lamp Aarti.", "latitude": 25.3072, "longitude": 83.0104, "tags": ["#Varanasi", "#GangaAarti"]
+    },
+
+    # West Bengal
+    {
+        "id": "victoria-memorial", "state_id": "west_bengal", "city_id": "kolkata",
+        "title": "Victoria Memorial", "sub_location": "Queen's Way, Kolkata",
+        "rating": 4.7, "reviews_count": 31000, "category": "Colonial Architecture",
+        "best_view_time": "4:30 PM - 6:30 PM (Cool Afternoon Gardens & Light Show)",
+        "image": "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80",
+        "description": "Large marble building dedicated to memory of Queen Victoria.", "latitude": 22.5448, "longitude": 88.3426, "tags": ["#Kolkata", "#Victoria"]
     }
 ]
 
 FOODS_DATA = [
     # Andhra Pradesh
     {
-        "id": "andhra-thali",
-        "state_id": "andhra_pradesh",
-        "city_id": "visakhapatnam",
-        "dish_name": "Authentic Andhra Meals (Thali)",
-        "category": "Traditional Meals",
-        "price_inr": 120,
-        "trust_score": 98,
+        "id": "andhra-thali", "state_id": "andhra_pradesh", "city_id": "visakhapatnam",
+        "dish_name": "Authentic Andhra Meals (Thali)", "category": "Traditional Meals",
+        "price_inr": 120, "trust_score": 98,
         "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Pure spice perfection! The aromatic Pappu with hot ghee and Gongura chutney is unmatched.",
-        "source": "Local Foodie Vlogs & 1,420 Reviews",
-        "tags": ["#Thali", "#Spicy", "#Authentic"]
+        "review_quote": "Aromatic Pappu with hot ghee and Gongura chutney.", "source": "Vizag Food Vlogs", "tags": ["#Thali", "#Spicy"]
     },
     {
-        "id": "gongura-pachadi",
-        "state_id": "andhra_pradesh",
-        "city_id": "vijayawada",
-        "dish_name": "Gongura Pachadi & Rice",
-        "category": "Local Specialty Chutney",
-        "price_inr": 60,
-        "trust_score": 96,
-        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "The tangy signature sorrel leaf pickle served with hot steaming rice and garlic pods.",
-        "source": "YouTube Street Food Vloggers",
-        "tags": ["#Tangy", "#StreetFood", "#Signature"]
-    },
-    {
-        "id": "bamboo-chicken",
-        "state_id": "andhra_pradesh",
-        "city_id": "araku",
-        "dish_name": "Araku Bamboo Chicken",
-        "category": "Tribal Delicacy",
-        "price_inr": 250,
-        "trust_score": 94,
+        "id": "bamboo-chicken", "state_id": "andhra_pradesh", "city_id": "araku",
+        "dish_name": "Araku Bamboo Chicken", "category": "Tribal Delicacy",
+        "price_inr": 250, "trust_score": 94,
         "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Marinated chicken cooked inside green bamboo stalks over open charcoal embers with zero added oil.",
-        "source": "Araku Tribal Food Guides",
-        "tags": ["#TribalFood", "#Organic", "#Smoky"]
+        "review_quote": "Marinated chicken cooked inside green bamboo stalks over open charcoal embers.", "source": "Araku Guides", "tags": ["#Smoky", "#Tribal"]
     },
     {
-        "id": "pesarattu",
-        "state_id": "andhra_pradesh",
-        "city_id": "visakhapatnam",
-        "dish_name": "MLA Pesarattu Upma",
-        "category": "Breakfast Classic",
-        "price_inr": 80,
-        "trust_score": 95,
-        "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Crispy green gram crepe stuffed with savory ginger upma served with fresh ginger chutney.",
-        "source": "Coastal Andhra Breakfast Club",
-        "tags": ["#Breakfast", "#Healthy", "#Crispy"]
+        "id": "kakinada-kaja", "state_id": "andhra_pradesh", "city_id": "kakinada",
+        "dish_name": "Gottam Kakinada Kaja", "category": "Signature Heritage Sweet",
+        "price_inr": 80, "trust_score": 99,
+        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Crispy layered sweet pastry filled with rich hot sugar syrup.", "source": "Kakinada Sweet Guild", "tags": ["#KakinadaKaja", "#Sweet"]
     },
-
-    # Rajasthan
     {
-        "id": "dal-baati-churma",
-        "state_id": "rajasthan",
-        "city_id": "jaipur",
-        "dish_name": "Dal Baati Churma",
-        "category": "Royal Cuisine",
-        "price_inr": 220,
-        "trust_score": 99,
+        "id": "guntur-idli", "state_id": "andhra_pradesh", "city_id": "guntur",
+        "dish_name": "Guntur Karam Idli & Mirchi Bajji", "category": "Fiery Street Snack",
+        "price_inr": 60, "trust_score": 97,
+        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Steamed idlis tossed in spicy Guntur red chili podi and ghee.", "source": "Guntur Street Eats", "tags": ["#SpicyPodi", "#Guntur"]
+    },
+    {
+        "id": "tirupati-laddu", "state_id": "andhra_pradesh", "city_id": "tirupati",
+        "title": "Tirupati Srivari Laddu Prasadam", "dish_name": "Tirupati Laddu Prasadam", "category": "Sacred Prasadam Sweet",
+        "price_inr": 50, "trust_score": 100,
         "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Baked wheat balls dipped in pure desi ghee served with spicy Panchmel dal and sweet churma.",
-        "source": "Jaipur Food Tours & Heritage Guides",
-        "tags": ["#RoyalThali", "#DesiGhee", "#MustTry"]
+        "review_quote": "GI-tagged sacred sweet made with pure ghee, cashew nuts, and cardamom.", "source": "Tirumala Temple Prasadam", "tags": ["#Prasadam", "#Tirupati"]
     },
     {
-        "id": "laal-maas",
-        "state_id": "rajasthan",
-        "city_id": "jodhpur",
-        "dish_name": "Traditional Laal Maas",
-        "category": "Royal Meat Curry",
-        "price_inr": 380,
-        "trust_score": 95,
-        "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Fiery red mutton curry slow-cooked with Mathania red chilies and yogurt.",
-        "source": "Jodhpur Heritage Chefs",
-        "tags": ["#SpicyCurry", "#MathaniaChili", "#Heritage"]
+        "id": "vijayawada-royyala-biryani", "state_id": "andhra_pradesh", "city_id": "vijayawada",
+        "dish_name": "Vijayawada Spicy Prawns Biryani", "category": "Coastal Seafood Biryani",
+        "price_inr": 280, "trust_score": 96,
+        "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Spicy roasted prawns layered with aromatic biryani rice.", "source": "Vijayawada Spice Club", "tags": ["#Royyala", "#Biryani"]
     },
 
-    # Kerala
+    # Assam
     {
-        "id": "kerala-sadya",
-        "state_id": "kerala",
-        "city_id": "alleppey",
-        "dish_name": "Traditional Onam Sadya",
-        "category": "Banana Leaf Feast",
-        "price_inr": 280,
-        "trust_score": 99,
-        "image": "https://images.unsplash.com/photo-1610192244261-3f33de3f55e4?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Grand vegetarian banquet featuring 24+ dishes served on fresh plantain leaf with Palada Payasam.",
-        "source": "Kerala Culinary Heritage",
-        "tags": ["#BananaLeaf", "#Sadya", "#Feast"]
-    },
-    {
-        "id": "karimeen-pollichathu",
-        "state_id": "kerala",
-        "city_id": "kochi",
-        "dish_name": "Karimeen Pollichathu",
-        "category": "Backwater Seafood",
-        "price_inr": 450,
-        "trust_score": 97,
+        "id": "assam-masor-tenga", "state_id": "assam", "city_id": "guwahati",
+        "dish_name": "Assamese Masor Tenga (Tangy Fish Curry)", "category": "Traditional Fish Curry",
+        "price_inr": 180, "trust_score": 96,
         "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Pearl spot fish marinated in spicy shallot paste, wrapped in banana leaf and grilled on tawa.",
-        "source": "Kochi Backwater Foodies",
-        "tags": ["#Seafood", "#BananaLeafWrap", "#Coastal"]
+        "review_quote": "Refreshing light fish curry cooked with elephant apple and tomatoes.", "source": "Guwahati Eats", "tags": ["#AssamFish", "#MasorTenga"]
+    },
+
+    # Bihar
+    {
+        "id": "litti-chokha", "state_id": "bihar", "city_id": "patna",
+        "dish_name": "Patna Litti Chokha", "category": "Iconic Clay Baked Meal",
+        "price_inr": 70, "trust_score": 99,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Roasted sattu-stuffed wheat balls served with roasted eggplant chokha and ghee.", "source": "Patna Street Food", "tags": ["#LittiChokha", "#Patna"]
+    },
+
+    # Goa
+    {
+        "id": "goan-fish-curry", "state_id": "goa", "city_id": "panaji",
+        "dish_name": "Goan Fish Curry Rice", "category": "Coastal Coconut Curry",
+        "price_inr": 220, "trust_score": 98,
+        "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Kingfish cooked in aromatic coconut, kokum, and red chili gravy.", "source": "Panaji Shacks", "tags": ["#GoanCurry", "#Seafood"]
+    },
+
+    # Gujarat
+    {
+        "id": "gujarati-thali", "state_id": "gujarat", "city_id": "ahmedabad",
+        "dish_name": "Grand Gujarati Thali & Dhokla", "category": "Sweet & Savory Vegetarian Feast",
+        "price_inr": 200, "trust_score": 99,
+        "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Unlimited platter with Kadhi, Undhiyu, Dhokla, and hot Phulkas.", "source": "Ahmedabad Heritage Thali", "tags": ["#GujaratiThali", "#Dhokla"]
+    },
+
+    # Karnataka
+    {
+        "id": "masala-dosa", "state_id": "karnataka", "city_id": "bengaluru",
+        "dish_name": "Bengaluru Crispy Masala Dosa", "category": "Iconic South Breakfast",
+        "price_inr": 90, "trust_score": 99,
+        "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Golden butter-crisped rice crepe with spiced potato filling and coconut chutney.", "source": "Bengaluru Tiffin Club", "tags": ["#MasalaDosa", "#Bengaluru"]
     },
 
     # Maharashtra
     {
-        "id": "vada-pav",
-        "state_id": "maharashtra",
-        "city_id": "mumbai",
-        "dish_name": "Mumbai Artisanal Vada Pav",
-        "category": "Street Food Icon",
-        "price_inr": 25,
-        "trust_score": 99,
+        "id": "vada-pav", "state_id": "maharashtra", "city_id": "mumbai",
+        "dish_name": "Mumbai Artisanal Vada Pav", "category": "Street Food Icon",
+        "price_inr": 25, "trust_score": 99,
         "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Deep-fried spiced potato patty sandwiched in soft pav bun with dry garlic chutney.",
-        "source": "Mumbai Street Food Collective",
-        "tags": ["#StreetFood", "#BudgetFriendly", "#Iconic"]
-    },
-    {
-        "id": "misal-pav",
-        "state_id": "maharashtra",
-        "city_id": "pune",
-        "dish_name": "Kolhapuri Spicy Misal Pav",
-        "category": "Spicy Breakfast",
-        "price_inr": 90,
-        "trust_score": 96,
-        "image": "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Sprouted moth bean curry topped with crunchy farsan, chopped onions, and lemon juice.",
-        "source": "Pune Food Trail",
-        "tags": ["#SpicyMisal", "#Farsan", "#Breakfast"]
+        "review_quote": "Deep-fried spiced potato patty sandwiched in soft pav bun with dry garlic chutney.", "source": "Mumbai Street Eats", "tags": ["#VadaPav", "#Mumbai"]
     },
 
-    # Tamil Nadu
+    # Punjab
     {
-        "id": "cheeese-kothu-parotta",
-        "state_id": "tamil_nadu",
-        "city_id": "madurai",
-        "dish_name": "Madurai Kothu Parotta",
-        "category": "Night Market Special",
-        "price_inr": 140,
-        "trust_score": 96,
-        "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80",
-        "review_quote": "Flaky layered parotta shredded on iron griddle with eggs, chicken gravy, and aromatic spices.",
-        "source": "Madurai Street Eats",
-        "tags": ["#StreetFood", "#Kothu", "#NightMarket"]
+        "id": "amritsari-kulcha", "state_id": "punjab", "city_id": "amritsar",
+        "dish_name": "Amritsari Stuffed Kulcha & Chole", "category": "Street Breakfast",
+        "price_inr": 110, "trust_score": 98,
+        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Butter-dripping clay-oven baked bread with spicy chickpeas.", "source": "Amritsar Foodies", "tags": ["#Butter", "#Crispy"]
+    },
+
+    # Telangana
+    {
+        "id": "hyderabadi-biryani", "state_id": "telangana", "city_id": "hyderabad",
+        "dish_name": "Hyderabadi Dum Biryani", "category": "Royal Rice Feast",
+        "price_inr": 290, "trust_score": 99,
+        "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Slow-cooked saffron rice layered with tender marinated meat.", "source": "Old City Biryani Trail", "tags": ["#Biryani", "#Iconic"]
+    },
+
+    # West Bengal
+    {
+        "id": "kolkata-rosogolla", "state_id": "west_bengal", "city_id": "kolkata",
+        "dish_name": "Kolkata Baked Rosogolla & Kathi Roll", "category": "Sweet & Street Delicacy",
+        "price_inr": 60, "trust_score": 98,
+        "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
+        "review_quote": "Spongy cottage cheese balls soaked in warm cardamom syrup.", "source": "Kolkata Sweet Trail", "tags": ["#Rosogolla", "#Kolkata"]
     }
 ]
 
 CULTURE_DATA = [
     {
-        "id": "dheemsa-dance",
-        "state_id": "andhra_pradesh",
-        "title": "Dhimsa Tribal Dance",
-        "category": "Folk Art & Heritage",
-        "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
-        "description": "Rhythmic tribal group dance performed in colorful traditional attires in Araku valley."
+        "id": "dheemsa-dance", "state_id": "andhra_pradesh", "title": "Dhimsa Tribal Dance",
+        "category": "Folk Art & Heritage", "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+        "description": "Rhythmic group dance performed in colorful traditional attires."
     },
     {
-        "id": "ghoomar-rajasthan",
-        "state_id": "rajasthan",
-        "title": "Ghoomar Folk Performance",
-        "category": "Traditional Dance",
-        "image": "https://images.unsplash.com/photo-1545232979-fbf34f5ce948?auto=format&fit=crop&w=800&q=80",
-        "description": "Royal swirling dance performed by women wearing flowing ghagras during festivals."
-    },
-    {
-        "id": "kathakali-kerala",
-        "state_id": "kerala",
-        "title": "Kathakali Classical Drama",
-        "category": "Classical Art",
-        "image": "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80",
-        "description": "Storytelling dance-drama known for elaborate vibrant face makeup and hand gestures."
+        "id": "durga-puja", "state_id": "west_bengal", "title": "Kolkata Durga Puja Pandals",
+        "category": "Grand Festival", "image": "https://images.unsplash.com/photo-1545232979-fbf34f5ce948?auto=format&fit=crop&w=800&q=80",
+        "description": "UNESCO intangible cultural heritage festival featuring spectacular art pandals."
     }
 ]

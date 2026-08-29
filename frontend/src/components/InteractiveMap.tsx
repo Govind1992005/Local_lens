@@ -42,7 +42,28 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
 
           {places.map((place) => {
             const isSelected = activePlace?.id === place.id;
-            return (
+  const handleGetDirections = (place: Place) => {
+    if (typeof window !== 'undefined' && 'geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+          const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${place.latitude},${place.longitude}&travelmode=driving`;
+          window.open(mapsUrl, '_blank');
+        },
+        (error) => {
+          console.warn("Geolocation permission error/denied:", error.message);
+          const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.latitude},${place.longitude}`;
+          window.open(fallbackUrl, '_blank');
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    } else {
+      window.open(`https://www.google.com/maps/dir/?api=1&destination=${place.latitude},${place.longitude}`, '_blank');
+    }
+  };
+
+  return (
               <div
                 key={place.id}
                 onClick={() => setActivePlace(place)}
@@ -105,7 +126,10 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
                 <div className="text-xs text-gray-500 font-medium">
                   Rating: <span className="font-bold text-[#1C1310]">{activePlace.rating} / 5.0</span>
                 </div>
-                <button className="bg-[#1C1310] hover:bg-[#FF6A4D] text-white text-xs px-4 py-2 rounded-xl font-medium transition-colors">
+                <button 
+                  onClick={() => activePlace && handleGetDirections(activePlace)}
+                  className="bg-[#1C1310] hover:bg-[#FF6A4D] text-white text-xs px-4 py-2 rounded-xl font-medium transition-colors"
+                >
                   Get Directions
                 </button>
               </div>

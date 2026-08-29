@@ -10,12 +10,15 @@ from typing import Optional, List
 import os
 
 from app.data import STATES_DATA, PLACES_DATA, FOODS_DATA, CULTURE_DATA
+from app.api.search import router as search_router
 
 app = FastAPI(
     title="LocalLens API",
     description="Backend API for LocalLens - Discover places like a local",
     version="1.0.0"
 )
+
+app.include_router(search_router)
 
 # Enable CORS for frontend integration
 app.add_middleware(

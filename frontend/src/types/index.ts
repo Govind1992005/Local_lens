@@ -22,6 +22,7 @@ export interface Place {
   category: string;
   image: string;
   description: string;
+  best_view_time?: string;
   latitude: number;
   longitude: number;
   tags: string[];
