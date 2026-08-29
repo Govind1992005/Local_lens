@@ -312,6 +312,7 @@ export default function Home() {
   const [culture, setCulture] = useState<CultureItem[]>([]);
   const [restaurantTiers, setRestaurantTiers] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
+  const [dataGovData, setDataGovData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   // Fetch data from multi-agent API whenever selectedState or selectedCityId changes
@@ -330,6 +331,9 @@ export default function Home() {
         if (isMounted && data.results) {
           if (data.results.youtube_analysis) {
             setYoutubeData(data.results.youtube_analysis);
+          }
+          if (data.results.data_gov_in_metrics) {
+            setDataGovData(data.results.data_gov_in_metrics);
           }
           if (data.results.restaurant_tiers) {
             setRestaurantTiers(data.results.restaurant_tiers);
@@ -355,7 +359,7 @@ export default function Home() {
             })));
           } else {
             // Static fallback for places if backend returned empty list
-            setPlaces(INITIAL_PLACES.filter(p => p.state_id === selectedState.id));
+            setPlaces(INITIAL_PLACES.filter(p => p.state_id === selectedState.id && (!selectedCityId || p.city_id === selectedCityId)));
           }
 
           // Map foods returned by agent for this specific location
@@ -375,14 +379,14 @@ export default function Home() {
             })));
           } else {
             // Static fallback for foods if backend returned empty list
-            setFoods(INITIAL_FOODS.filter(f => f.state_id === selectedState.id));
+            setFoods(INITIAL_FOODS.filter(f => f.state_id === selectedState.id && (!selectedCityId || f.city_id === selectedCityId)));
           }
         }
       })
       .catch(err => {
         console.warn('Backend search agent offline, using static dataset fallback:', err);
-        const filteredP = INITIAL_PLACES.filter(p => p.state_id === selectedState.id);
-        const filteredF = INITIAL_FOODS.filter(f => f.state_id === selectedState.id);
+        const filteredP = INITIAL_PLACES.filter(p => p.state_id === selectedState.id && (!selectedCityId || p.city_id === selectedCityId));
+        const filteredF = INITIAL_FOODS.filter(f => f.state_id === selectedState.id && (!selectedCityId || f.city_id === selectedCityId));
         setPlaces(filteredP);
         setFoods(filteredF);
       })
@@ -393,21 +397,23 @@ export default function Home() {
     return () => { isMounted = false; };
   }, [selectedState, selectedCityId]);
 
-  // Filter places & foods based on active search query
+  // Filter places & foods based on selectedCityId and active search query
   const filteredPlaces = places.filter((p) => {
+    const matchesCity = !selectedCityId || p.city_id === selectedCityId || (p.sub_location && p.sub_location.toLowerCase().includes(selectedCityId.replace(/_/g, ' ')));
     const matchesQuery = !searchQuery || 
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
       p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesQuery;
+    return matchesCity && matchesQuery;
   });
 
   const filteredFoods = foods.filter((f) => {
+    const matchesCity = !selectedCityId || f.city_id === selectedCityId;
     const matchesQuery = !searchQuery || 
       f.dish_name.toLowerCase().includes(searchQuery.toLowerCase()) || 
       f.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       f.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesQuery;
+    return matchesCity && matchesQuery;
   });
 
   const filteredCulture = INITIAL_CULTURE.filter(c => c.state_id === selectedState.id);
@@ -479,6 +485,7 @@ export default function Home() {
         foodsData={foods}
         restaurantTiers={restaurantTiers}
         youtubeData={youtubeData}
+        dataGovData={dataGovData}
       />
 
       {/* Quick Interactive Category Cards */}

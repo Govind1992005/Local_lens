@@ -509,6 +509,30 @@ PLACES_DATA = [
         "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
         "description": "16th-century iconic mosque with four grand arches in historic Hyderabad.", "latitude": 17.3616, "longitude": 78.4747, "tags": ["#Charminar", "#Hyderabad"]
     },
+    {
+        "id": "golconda-fort", "state_id": "telangana", "city_id": "hyderabad",
+        "title": "Golconda Fort & Sound Light Show", "sub_location": "Ibrahim Bagh, Hyderabad",
+        "rating": 4.7, "reviews_count": 42100, "category": "Hill Fortress",
+        "best_view_time": "4:30 PM - 7:00 PM (Sunset Fort View)",
+        "image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80",
+        "description": "Acoustic citadel fort once famous for housing the Koh-i-Noor diamond.", "latitude": 17.3833, "longitude": 78.4011, "tags": ["#Golconda", "#Hyderabad"]
+    },
+    {
+        "id": "ramappa-temple", "state_id": "telangana", "city_id": "warangal",
+        "title": "Ramappa UNESCO World Heritage Temple", "sub_location": "Palampet, Warangal",
+        "rating": 4.9, "reviews_count": 18500, "category": "UNESCO World Heritage",
+        "best_view_time": "8:00 AM - 11:00 AM (Architectural Light)",
+        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "description": "13th-century Kakatiya architectural marvel built with lightweight floating bricks.", "latitude": 18.2581, "longitude": 79.9404, "tags": ["#Warangal", "#UNESCO"]
+    },
+    {
+        "id": "thousand-pillar-temple", "state_id": "telangana", "city_id": "warangal",
+        "title": "Thousand Pillar Temple (Rudreshwara Swamy)", "sub_location": "Hanamkonda, Warangal",
+        "rating": 4.7, "reviews_count": 14200, "category": "Ancient Temple",
+        "best_view_time": "6:30 AM - 9:00 AM (Morning Darshan)",
+        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "description": "Star-shaped Kakatiya temple dedicated to Lord Shiva, Vishnu, and Surya.", "latitude": 18.0039, "longitude": 79.5750, "tags": ["#Warangal", "#Temple"]
+    },
 
     # Uttar Pradesh
     {

@@ -38,6 +38,26 @@ def test_get_places_contains_best_view_time():
     assert "best_view_time" in places[0]
     assert len(places[0]["best_view_time"]) > 0
 
+def test_city_specific_filtering_for_kakinada():
+    """Verifies that selecting Kakinada returns only Kakinada places and excludes Vizag places."""
+    response = client.get("/api/places?state_id=andhra_pradesh&city_id=kakinada")
+    assert response.status_code == 200
+    places = response.json()
+    assert len(places) > 0
+    for p in places:
+        assert p["city_id"] == "kakinada"
+        assert p["city_id"] != "visakhapatnam"
+
+def test_city_specific_filtering_for_warangal():
+    """Verifies that selecting Warangal in Telangana returns only Warangal places and excludes Hyderabad places."""
+    response = client.get("/api/places?state_id=telangana&city_id=warangal")
+    assert response.status_code == 200
+    places = response.json()
+    assert len(places) > 0
+    for p in places:
+        assert p["city_id"] == "warangal"
+        assert p["city_id"] != "hyderabad"
+
 def test_concurrent_search_endpoint_success():
     """Tests /api/v1/search/concurrent endpoint for multi-agent parallel execution."""
     response = client.get("/api/v1/search/concurrent?state=Andhra_Pradesh&city=Visakhapatnam")
@@ -50,6 +70,12 @@ def test_concurrent_search_endpoint_success():
     assert "food" in data["results"]
     assert len(data["results"]["places"]) > 0
     assert len(data["results"]["food"]) > 0
+    # Verify multi-source data processing in search output
+    assert "youtube_analysis" in data["results"]
+    assert "data_gov_in_metrics" in data["results"]
+    assert "transcript_extracted_recommendations" in data["results"]["youtube_analysis"]
+    assert "vlog_consensus" in data["results"]["places"][0]
+    assert "vlog_consensus" in data["results"]["food"][0]
 
 def test_concurrent_search_distinct_image_resolution():
     """Verifies that high-fidelity image agent assigns distinct image URLs."""
@@ -63,6 +89,25 @@ def test_concurrent_search_distinct_image_resolution():
     # Assert image URLs are valid strings and non-empty
     for img in place_imgs + food_imgs:
         assert img.startswith("http")
+
+@pytest.mark.asyncio
+async def test_data_gov_agent_telangana_and_andhra_pradesh():
+    """Verifies that data_gov_agent fetches records for Telangana & Andhra Pradesh."""
+    from app.agents.data_gov_agent import fetch_data_gov_in_metrics
+    
+    ap_res = await fetch_data_gov_in_metrics(state="Andhra Pradesh")
+    assert ap_res["state_metrics"]["state_name"] == "Andhra Pradesh"
+    assert len(ap_res["top_5_places"]) == 5
+    assert ap_res["top_5_places"][0]["city"] == "Kakinada"
+    
+    tg_res = await fetch_data_gov_in_metrics(state="Telangana")
+    assert tg_res["state_metrics"]["state_name"] == "Telangana"
+    assert len(tg_res["top_5_places"]) == 5
+    assert tg_res["top_5_places"][0]["name"].startswith("Charminar")
+    
+    # Test typo tolerance for telengana
+    tg_typo_res = await fetch_data_gov_in_metrics(state="Telengana")
+    assert tg_typo_res["state_metrics"]["state_name"] == "Telangana"
 
 @pytest.mark.asyncio
 async def test_search_orchestrator_parallel_mocking():
