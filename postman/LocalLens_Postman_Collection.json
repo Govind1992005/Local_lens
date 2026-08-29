@@ -1,0 +1,118 @@
+{
+  "info": {
+    "name": "LocalLens FastAPI Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "7a8b9c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+    "description": "Postman Collection for LocalLens - Indian state tourism, authentic food trust scores, and AI trip planner endpoints."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Checks backend API operational status."
+      }
+    },
+    {
+      "name": "States API",
+      "item": [
+        {
+          "name": "Get All States",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/states",
+              "host": ["{{base_url}}"],
+              "path": ["api", "states"]
+            },
+            "description": "Returns all Indian states with metadata and city lists."
+          }
+        },
+        {
+          "name": "Get State By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/states/andhra_pradesh",
+              "host": ["{{base_url}}"],
+              "path": ["api", "states", "andhra_pradesh"]
+            },
+            "description": "Returns single state details."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Places API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/places?state_id=andhra_pradesh&query=beach",
+          "host": ["{{base_url}}"],
+          "path": ["api", "places"],
+          "query": [
+            { "key": "state_id", "value": "andhra_pradesh" },
+            { "key": "query", "value": "beach" }
+          ]
+        },
+        "description": "Fetches local attractions filtered by state, city, or search keyword."
+      }
+    },
+    {
+      "name": "Authentic Foods API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/foods?state_id=andhra_pradesh",
+          "host": ["{{base_url}}"],
+          "path": ["api", "foods"],
+          "query": [
+            { "key": "state_id", "value": "andhra_pradesh" }
+          ]
+        },
+        "description": "Fetches authentic regional dishes along with Trust Scores extracted from local reviews."
+      }
+    },
+    {
+      "name": "AI Trip Planner API",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/planner",
+          "host": ["{{base_url}}"],
+          "path": ["api", "planner"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"state_id\": \"andhra_pradesh\",\n  \"city_id\": \"visakhapatnam\",\n  \"days\": 3,\n  \"budget\": \"Moderate\",\n  \"interests\": [\"Food\", \"Heritage\"]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Generates a multi-day itinerary using Claude API agent reasoning."
+      }
+    }
+  ]
+}
