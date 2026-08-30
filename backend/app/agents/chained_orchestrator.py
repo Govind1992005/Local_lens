@@ -16,6 +16,7 @@ from app.agents.youtube_agent import analyze_youtube_vlogs
 from app.agents.instagram_agent import analyze_instagram_hashtags
 from app.agents.data_gov_agent import fetch_data_gov_in_metrics
 from app.agents.langchain_agent import execute_langchain_react_agent
+from app.agents.search_orchestrator import attach_images_to_items
 
 async def orchestrate_chained_search(state: str, city: Optional[str] = None) -> Dict[str, Any]:
     """
@@ -64,23 +65,16 @@ async def orchestrate_chained_search(state: str, city: Optional[str] = None) -> 
     youtube_summary = youtube_analysis.get("insights_summary", [])
     gov_top_names = [g["name"].lower() for g in data_gov_metrics.get("top_5_places", [])]
 
-    formatted_places = []
-    for idx, p in enumerate(raw_places):
-        p_copy = dict(p)
-        p_copy["image_url"] = places_images[idx]
+    formatted_places = attach_images_to_items(raw_places, places_images)
+    for p_copy in formatted_places:
         p_name = p_copy.get("name") or p_copy.get("title") or ""
-        # Check if verified by data.gov.in
         is_gov_verified = any(g_name in p_name.lower() or p_name.lower() in g_name for g_name in gov_top_names)
         p_copy["verified_by_data_gov"] = is_gov_verified
         p_copy["vlog_consensus"] = f"Highlighted in YouTube transcript analysis for {city or state}"
-        formatted_places.append(p_copy)
 
-    formatted_foods = []
-    for idx, f in enumerate(raw_foods):
-        f_copy = dict(f)
-        f_copy["image_url"] = foods_images[idx]
+    formatted_foods = attach_images_to_items(raw_foods, foods_images)
+    for f_copy in formatted_foods:
         f_copy["vlog_consensus"] = f"Top recommended dish across {youtube_analysis.get('total_analyzed', 30)} analyzed vlogs & transcripts"
-        formatted_foods.append(f_copy)
 
     return {
         "state": state,

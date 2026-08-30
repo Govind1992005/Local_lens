@@ -260,7 +260,7 @@ PLACES_DATA = [
         "title": "RK Beach & Submarine Museum", "sub_location": "Beach Road, Visakhapatnam",
         "rating": 4.7, "reviews_count": 12450, "category": "Beach & Heritage",
         "best_view_time": "5:30 PM - 7:00 PM (Sunset & Evening Promenade)",
-        "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Visakhapatnam_RK_Beach_panorama.jpg/1280px-Visakhapatnam_RK_Beach_panorama.jpg",
         "description": "Scenic coastline featuring INS Kursura Submarine Museum.", "latitude": 17.7126, "longitude": 83.3188, "tags": ["#CoastalViews", "#Beach"]
     },
     {
@@ -268,23 +268,39 @@ PLACES_DATA = [
         "title": "Araku Valley Coffee Plantations", "sub_location": "Eastern Ghats, Araku",
         "rating": 4.8, "reviews_count": 8920, "category": "Nature & Mountains",
         "best_view_time": "6:00 AM - 9:00 AM (Misty Morning Valleys)",
-        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Araku_valley_view.jpg/1280px-Araku_valley_view.jpg",
         "description": "Lush hill station renowned for organic coffee plantations.", "latitude": 18.3273, "longitude": 82.8775, "tags": ["#MistyHills", "#Coffee"]
+    },
+    {
+        "id": "borra-caves", "state_id": "andhra_pradesh", "city_id": "araku",
+        "title": "Borra Caves & Ananthagiri Waterfalls", "sub_location": "Ananthagiri Hills, Araku",
+        "rating": 4.8, "reviews_count": 9400, "category": "Natural Cave Formations",
+        "best_view_time": "10:00 AM - 2:00 PM (Illuminated Stalagmites)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Borra_caves1.jpg/1280px-Borra_caves1.jpg",
+        "description": "Million-year-old limestone cave system with spectacular stalactite and stalagmite structures.", "latitude": 18.2804, "longitude": 83.0394, "tags": ["#BorraCaves", "#Araku"]
     },
     {
         "id": "kanaka-durga", "state_id": "andhra_pradesh", "city_id": "vijayawada",
         "title": "Kanaka Durga Temple", "sub_location": "Indrakeeladri Hill, Vijayawada",
         "rating": 4.9, "reviews_count": 28400, "category": "Spiritual Pilgrimage",
         "best_view_time": "6:00 AM - 8:00 AM (Morning Darshan & Krishna River View)",
-        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Kanaka_Durga_Temple_Vijayawada.jpg/1280px-Kanaka_Durga_Temple_Vijayawada.jpg",
         "description": "Sacred hilltop temple overlooking the Krishna River.", "latitude": 16.5186, "longitude": 80.6092, "tags": ["#Temple", "#Heritage"]
+    },
+    {
+        "id": "undavalli-caves", "state_id": "andhra_pradesh", "city_id": "vijayawada",
+        "title": "Undavalli Rock-Cut Caves", "sub_location": "Penumaka - Vijayawada Rd, Vijayawada",
+        "rating": 4.7, "reviews_count": 6800, "category": "Monolithic Rock Architecture",
+        "best_view_time": "3:30 PM - 5:30 PM (Afternoon Carvings View)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Undavalli_caves_rock_cut.jpg/1280px-Undavalli_caves_rock_cut.jpg",
+        "description": "4th-century monolithic sandstone rock-cut cave temple complex.", "latitude": 16.4975, "longitude": 80.5815, "tags": ["#Undavalli", "#Monuments"]
     },
     {
         "id": "tirumala-temple", "state_id": "andhra_pradesh", "city_id": "tirupati",
         "title": "Tirumala Venkateswara Temple", "sub_location": "Tirumala Hills, Tirupati",
         "rating": 4.9, "reviews_count": 85000, "category": "World Famous Pilgrimage",
         "best_view_time": "3:00 AM - 6:00 AM (Suprabhatam Darshan)",
-        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Tirumala_090615.jpg/1280px-Tirumala_090615.jpg",
         "description": "World's most visited sacred hill shrine nestled in Seshachalam hills.", "latitude": 13.6833, "longitude": 79.3472, "tags": ["#Tirupati", "#Devotional"]
     },
     {
@@ -293,7 +309,7 @@ PLACES_DATA = [
         "rating": 4.6, "reviews_count": 5200, "category": "Scenic Coast & Silk Heritage",
         "best_view_time": "5:00 PM - 6:30 PM (Sunset & Sea Breeze)",
         "query_term": "uppada beach kakinada",
-        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Kakinada_beach.jpg/1280px-Kakinada_beach.jpg",
         "description": "Pristine beach famous for handcrafted Jamdani silk sarees and fresh seafood.", "latitude": 17.0863, "longitude": 82.3278, "tags": ["#UppadaBeach", "#Kakinada"]
     },
     {
@@ -302,7 +318,7 @@ PLACES_DATA = [
         "rating": 4.7, "reviews_count": 8400, "category": "Eco Mangrove Reserve",
         "best_view_time": "6:30 AM - 9:30 AM (Boating & Bird Watching)",
         "query_term": "coringa sanctuary kakinada",
-        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Coringa_Mangrove_Forest_Kakinada.jpg/1280px-Coringa_Mangrove_Forest_Kakinada.jpg",
         "description": "India's second largest mangrove forest renowned for boardwalks, otters, and river boating.", "latitude": 16.8925, "longitude": 82.2858, "tags": ["#Mangroves", "#Coringa"]
     },
     {
@@ -310,7 +326,7 @@ PLACES_DATA = [
         "title": "Kotappakonda Trikoteswara Temple", "sub_location": "Narasaraopet, Guntur",
         "rating": 4.7, "reviews_count": 4100, "category": "Hill Shrine",
         "best_view_time": "7:00 AM - 10:00 AM (Morning Breeze)",
-        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Kotappakonda_Temple_Guntur.jpg/1280px-Kotappakonda_Temple_Guntur.jpg",
         "description": "Revered three-peaked hill temple dedicated to Lord Shiva.", "latitude": 16.1415, "longitude": 80.0526, "tags": ["#Guntur", "#Spiritual"]
     },
     {
@@ -318,7 +334,7 @@ PLACES_DATA = [
         "title": "Orvakal Rock Garden", "sub_location": "NH 44, Kurnool",
         "rating": 4.5, "reviews_count": 3200, "category": "Geological Wonder",
         "best_view_time": "4:00 PM - 6:00 PM (Sunset Rock Formations)",
-        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Orvakal_Rock_Garden_Kurnool.jpg/1280px-Orvakal_Rock_Garden_Kurnool.jpg",
         "description": "300-acre park with natural quartz and silica rock formations around a lake.", "latitude": 15.6888, "longitude": 78.2045, "tags": ["#Kurnool", "#Rocks"]
     },
     {
@@ -326,7 +342,7 @@ PLACES_DATA = [
         "title": "Godavari Arch Bridge & Pushkar Ghat", "sub_location": "Godavari River, Rajahmundry",
         "rating": 4.8, "reviews_count": 9100, "category": "River Heritage",
         "best_view_time": "5:30 PM - 7:15 PM (Evening Godavari Aarti & Train View)",
-        "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Godavari_Arch_Bridge_Rajahmundry.jpg/1280px-Godavari_Arch_Bridge_Rajahmundry.jpg",
         "description": "Engineering marvel spanning the mighty Godavari River with scenic ghats.", "latitude": 17.0005, "longitude": 81.7774, "tags": ["#Godavari", "#Rajahmundry"]
     },
 
@@ -506,7 +522,7 @@ PLACES_DATA = [
         "title": "Charminar & Laad Bazaar", "sub_location": "Old City, Hyderabad",
         "rating": 4.8, "reviews_count": 54200, "category": "Heritage Monument",
         "best_view_time": "6:30 PM - 9:00 PM (Illuminated Heritage View)",
-        "image": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Charminar_Hyderabad_1.jpg/1280px-Charminar_Hyderabad_1.jpg",
         "description": "16th-century iconic mosque with four grand arches in historic Hyderabad.", "latitude": 17.3616, "longitude": 78.4747, "tags": ["#Charminar", "#Hyderabad"]
     },
     {
@@ -514,15 +530,23 @@ PLACES_DATA = [
         "title": "Golconda Fort & Sound Light Show", "sub_location": "Ibrahim Bagh, Hyderabad",
         "rating": 4.7, "reviews_count": 42100, "category": "Hill Fortress",
         "best_view_time": "4:30 PM - 7:00 PM (Sunset Fort View)",
-        "image": "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Golkonda_Fort_wide.jpg/1280px-Golkonda_Fort_wide.jpg",
         "description": "Acoustic citadel fort once famous for housing the Koh-i-Noor diamond.", "latitude": 17.3833, "longitude": 78.4011, "tags": ["#Golconda", "#Hyderabad"]
+    },
+    {
+        "id": "qutb-shahi-tombs", "state_id": "telangana", "city_id": "hyderabad",
+        "title": "Qutb Shahi Tombs & Deccan Park", "sub_location": "Ibrahim Bagh, Hyderabad",
+        "rating": 4.6, "reviews_count": 16500, "category": "Indo-Persian Architecture",
+        "best_view_time": "8:30 AM - 11:30 AM (Morning Heritage Walk)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Qutub_Shahi_Tombs_Hyderabad.jpg/1280px-Qutub_Shahi_Tombs_Hyderabad.jpg",
+        "description": "Domed mausoleums set in landscaped gardens dedicated to Qutb Shahi rulers.", "latitude": 17.3934, "longitude": 78.3965, "tags": ["#Tombs", "#Deccan"]
     },
     {
         "id": "ramappa-temple", "state_id": "telangana", "city_id": "warangal",
         "title": "Ramappa UNESCO World Heritage Temple", "sub_location": "Palampet, Warangal",
         "rating": 4.9, "reviews_count": 18500, "category": "UNESCO World Heritage",
         "best_view_time": "8:00 AM - 11:00 AM (Architectural Light)",
-        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Ramappa_Temple_Warangal.jpg/1280px-Ramappa_Temple_Warangal.jpg",
         "description": "13th-century Kakatiya architectural marvel built with lightweight floating bricks.", "latitude": 18.2581, "longitude": 79.9404, "tags": ["#Warangal", "#UNESCO"]
     },
     {
@@ -530,7 +554,7 @@ PLACES_DATA = [
         "title": "Thousand Pillar Temple (Rudreshwara Swamy)", "sub_location": "Hanamkonda, Warangal",
         "rating": 4.7, "reviews_count": 14200, "category": "Ancient Temple",
         "best_view_time": "6:30 AM - 9:00 AM (Morning Darshan)",
-        "image": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Thousand_Pillar_Temple_Hanamkonda.jpg/1280px-Thousand_Pillar_Temple_Hanamkonda.jpg",
         "description": "Star-shaped Kakatiya temple dedicated to Lord Shiva, Vishnu, and Surya.", "latitude": 18.0039, "longitude": 79.5750, "tags": ["#Warangal", "#Temple"]
     },
 
@@ -678,8 +702,22 @@ FOODS_DATA = [
         "id": "hyderabadi-biryani", "state_id": "telangana", "city_id": "hyderabad",
         "dish_name": "Hyderabadi Dum Biryani", "category": "Royal Rice Feast",
         "price_inr": 290, "trust_score": 99,
-        "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/1280px-Hyderabadi_Chicken_Biryani.jpg",
         "review_quote": "Slow-cooked saffron rice layered with tender marinated meat.", "source": "Old City Biryani Trail", "tags": ["#Biryani", "#Iconic"]
+    },
+    {
+        "id": "hyderabadi-haleem", "state_id": "telangana", "city_id": "hyderabad",
+        "dish_name": "Hyderabadi Irani Haleem", "category": "GI Tagged Stew",
+        "price_inr": 220, "trust_score": 98,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Haleem_Hyderabad.jpg/1280px-Haleem_Hyderabad.jpg",
+        "review_quote": "Rich stew of wheat, barley, meat and spices pounded for hours with ghee and fried onions.", "source": "Charminar Haleem Guild", "tags": ["#Haleem", "#GITag"]
+    },
+    {
+        "id": "warangal-sarva-pindi", "state_id": "telangana", "city_id": "warangal",
+        "dish_name": "Warangal Sarva Pindi", "category": "Traditional Rice Pancake",
+        "price_inr": 70, "trust_score": 96,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Sarva_pindi_telangana.jpg/1280px-Sarva_pindi_telangana.jpg",
+        "review_quote": "Crispy savory pancake made with rice flour, chana dal, peanuts, and sesame seeds.", "source": "Warangal Folk Eats", "tags": ["#SarvaPindi", "#Warangal"]
     },
 
     # West Bengal

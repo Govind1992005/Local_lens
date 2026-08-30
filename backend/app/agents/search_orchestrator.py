@@ -4,12 +4,21 @@ Executes Food, Places, and Image agents concurrently using asyncio.gather().
 """
 
 import asyncio
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 from app.agents.food_agent import search_food
 from app.agents.places_agent import search_places
 from app.agents.image_agent import resolve_images
 from app.agents.youtube_agent import analyze_youtube_vlogs
+
+def attach_images_to_items(items: List[Dict[str, Any]], image_urls: List[str]) -> List[Dict[str, Any]]:
+    """Helper function to map image URLs back to item dictionaries."""
+    formatted = []
+    for idx, item in enumerate(items):
+        item_copy = dict(item)
+        item_copy["image_url"] = image_urls[idx]
+        formatted.append(item_copy)
+    return formatted
 
 async def orchestrate_concurrent_search(state: str, city: Optional[str] = None) -> Dict[str, Any]:
     """Runs Food Search, Places Search, YouTube Vlogs Agent, and Image Resolver Agent in parallel."""
@@ -27,18 +36,9 @@ async def orchestrate_concurrent_search(state: str, city: Optional[str] = None) 
 
     places_images, foods_images = await asyncio.gather(places_img_task, foods_img_task)
 
-    # Step 3: Map distinct image URLs back to place & food items
-    formatted_places = []
-    for idx, p in enumerate(raw_places):
-        p_copy = dict(p)
-        p_copy["image_url"] = places_images[idx]
-        formatted_places.append(p_copy)
-
-    formatted_foods = []
-    for idx, f in enumerate(raw_foods):
-        f_copy = dict(f)
-        f_copy["image_url"] = foods_images[idx]
-        formatted_foods.append(f_copy)
+    # Step 3: Map distinct image URLs back to place & food items using helper function
+    formatted_places = attach_images_to_items(raw_places, places_images)
+    formatted_foods = attach_images_to_items(raw_foods, foods_images)
 
     return {
         "state": state,
@@ -49,3 +49,4 @@ async def orchestrate_concurrent_search(state: str, city: Optional[str] = None) 
             "youtube_analysis": youtube_insights
         }
     }
+

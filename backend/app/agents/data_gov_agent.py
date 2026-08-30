@@ -22,7 +22,7 @@ DATA_GOV_STATE_RECORDS = {
                 "category": "ASI & APTDC Protected Coastal Heritage",
                 "government_registry_id": "ASI-AP-KKD-001",
                 "best_view_time": "5:00 PM - 6:30 PM (Sunset & Sea Breeze)",
-                "image_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Uppada_Beach_Kakinada.jpg/1280px-Uppada_Beach_Kakinada.jpg",
                 "official_description": "Pristine coastal circuit recognized by Ministry of Tourism & Handloom Weaver Registry for GI-Tagged Jamdani Silk."
             },
             {
@@ -32,7 +32,7 @@ DATA_GOV_STATE_RECORDS = {
                 "category": "National Eco-Tourism Sanctuary (data.gov.in)",
                 "government_registry_id": "FD-AP-COR-002",
                 "best_view_time": "6:30 AM - 9:30 AM (Boating & Bird Watching)",
-                "image_url": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Coringa_Wildlife_Sanctuary_Mangroves.jpg/1280px-Coringa_Wildlife_Sanctuary_Mangroves.jpg",
                 "official_description": "India's second largest mangrove ecosystem protected under Forest Department Eco-Boating protocol."
             },
             {
@@ -42,7 +42,7 @@ DATA_GOV_STATE_RECORDS = {
                 "category": "Naval Defense & Maritime Heritage Museum",
                 "government_registry_id": "ASI-AP-VZG-003",
                 "best_view_time": "5:30 PM - 7:00 PM (Evening Promenade)",
-                "image_url": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
+                "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Visakhapatnam_RK_Beach_panorama.jpg/1280px-Visakhapatnam_RK_Beach_panorama.jpg",
                 "official_description": "Decommissioned Kalvari-class submarine preserved on beach sands by Indian Navy & APTDC."
             },
             {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Bot, Search, Sparkles, Youtube, Image as ImageIcon, Globe, MapPin, ShieldCheck, CheckCircle2, ChevronDown, ChevronUp, Loader2, DollarSign, Award, Utensils } from 'lucide-react';
+import { Bot, Search, Sparkles, Youtube, Image as ImageIcon, Globe, MapPin, ShieldCheck, CheckCircle2, ChevronDown, ChevronUp, Loader2, DollarSign, Award, Utensils, Compass } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface AssistantModalProps {
@@ -194,6 +194,21 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                           <p className="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed font-light">
                             {place.description}
                           </p>
+                          <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between">
+                            <span className="text-[10px] text-gray-400 flex items-center space-x-1">
+                              <MapPin className="w-3 h-3 text-[#FF6A4D]" />
+                              <span>{place.sub_location || place.city || locationLabel}</span>
+                            </span>
+                            <a
+                              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${place.title || place.name}, ${place.sub_location || place.city || locationLabel}`)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center space-x-1 bg-[#FF6A4D] hover:bg-[#E8583B] text-white text-[11px] font-bold px-3 py-1.5 rounded-xl transition-all shadow-md"
+                            >
+                              <Compass className="w-3 h-3" />
+                              <span>Navigate</span>
+                            </a>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -386,11 +401,22 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                               </div>
                             </div>
 
-                            <img
-                              src={place.image_url}
-                              alt={place.name}
-                              className="w-full sm:w-28 h-20 rounded-xl object-cover flex-shrink-0"
-                            />
+                            <div className="flex flex-col items-end space-y-2 flex-shrink-0 w-full sm:w-auto">
+                              <img
+                                src={place.image_url}
+                                alt={place.name}
+                                className="w-full sm:w-28 h-20 rounded-xl object-cover"
+                              />
+                              <a
+                                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${place.name}, ${place.city || locationLabel}`)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-xl transition-all shadow-md w-full sm:w-auto justify-center"
+                              >
+                                <Compass className="w-3 h-3" />
+                                <span>Navigate</span>
+                              </a>
+                            </div>
                           </div>
                         ))
                       ) : (
