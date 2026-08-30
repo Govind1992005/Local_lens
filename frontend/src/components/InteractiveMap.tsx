@@ -108,17 +108,20 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
               </div>
               <h3 className="font-serif text-xl font-bold text-[#1C1310]">{activePlace.title}</h3>
               <p className="text-xs text-gray-600 mt-2 leading-relaxed">{activePlace.description}</p>
+              {activePlace.image_url && (
+                <div className="mt-3 relative w-full h-32 rounded-lg overflow-hidden border border-gray-200">
+                  <img 
+                    src={activePlace.image_url} 
+                    alt={activePlace.title} 
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+              )}
               
               <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                 <div className="text-xs text-gray-500 font-medium">
                   Rating: <span className="font-bold text-[#1C1310]">{activePlace.rating} / 5.0</span>
                 </div>
-                <button 
-                  onClick={() => activePlace && handleGetDirections(activePlace)}
-                  className="bg-[#1C1310] hover:bg-[#FF6A4D] text-white text-xs px-4 py-2 rounded-xl font-medium transition-colors"
-                >
-                  Get Directions
-                </button>
               </div>
             </div>
           )}

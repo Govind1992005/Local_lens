@@ -25,16 +25,7 @@ export const AgentVisualization: React.FC<AgentVisualizationProps> = ({
 
   return (
     <div className="max-w-4xl mx-auto my-6 px-6">
-      {/* Toggle Button */}
-      <div className="flex justify-center">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex items-center space-x-2 bg-black/80 hover:bg-[#1C1310] text-[#D8A657] border border-[#D8A657]/40 px-5 py-2.5 rounded-full text-xs font-bold shadow-lg transition-all duration-300 transform hover:scale-105"
-        >
-          <Cpu className="w-4 h-4 text-[#FF6A4D] animate-pulse" />
-          <span>{isOpen ? 'Hide Live Agent Pipeline Inspector' : '🔍 Live Agent Execution & Data Extraction Inspector'}</span>
-        </button>
-      </div>
+
 
       {/* Visual Pipeline Panel */}
       <AnimatePresence>

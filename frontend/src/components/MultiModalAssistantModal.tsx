@@ -181,12 +181,22 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                           <p className="text-xs text-gray-300 mt-1 font-light">
                             Best View Time: <strong className="text-white">{place.best_view_time || "Morning / Evening"}</strong>
                           </p>
-                          <div className="mt-3 overflow-hidden rounded-xl h-40 relative">
+                          <div className="mt-3 overflow-hidden rounded-xl h-40 relative group cursor-pointer" onClick={() => {
+                              // Re-use logic from PlacesCarousel by dispatching a custom event or you can make a local state modal
+                              const event = new CustomEvent('openPlaceModal', { detail: place });
+                              window.dispatchEvent(event);
+                          }}>
                             <img
-                              src={place.image || place.image_url}
+                              src={place.image_url || place.image}
                               alt={place.title || place.name}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              onError={(e) => { (e.target as HTMLImageElement).src = place.image; }}
                             />
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <span className="text-white text-xs font-bold flex items-center space-x-1">
+                                <Search className="w-4 h-4" /> <span>View Details</span>
+                              </span>
+                            </div>
                             <span className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-md text-[9px] text-gray-200 px-2 py-0.5 rounded">
                               image_search() verified
                             </span>
@@ -199,15 +209,6 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                               <MapPin className="w-3 h-3 text-[#FF6A4D]" />
                               <span>{place.sub_location || place.city || locationLabel}</span>
                             </span>
-                            <a
-                              href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${place.title || place.name}, ${place.sub_location || place.city || locationLabel}`)}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center space-x-1 bg-[#FF6A4D] hover:bg-[#E8583B] text-white text-[11px] font-bold px-3 py-1.5 rounded-xl transition-all shadow-md"
-                            >
-                              <Compass className="w-3 h-3" />
-                              <span>Navigate</span>
-                            </a>
                           </div>
                         </div>
                       ))}
@@ -402,20 +403,16 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                             </div>
 
                             <div className="flex flex-col items-end space-y-2 flex-shrink-0 w-full sm:w-auto">
-                              <img
-                                src={place.image_url}
-                                alt={place.name}
-                                className="w-full sm:w-28 h-20 rounded-xl object-cover"
-                              />
-                              <a
-                                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${place.name}, ${place.city || locationLabel}`)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center space-x-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-xl transition-all shadow-md w-full sm:w-auto justify-center"
-                              >
-                                <Compass className="w-3 h-3" />
-                                <span>Navigate</span>
-                              </a>
+                                <img
+                                  src={place.image_url || place.image}
+                                  alt={place.name}
+                                  className="w-full sm:w-28 h-20 rounded-xl object-cover cursor-pointer hover:opacity-80 transition-opacity"
+                                  onClick={() => {
+                                      const event = new CustomEvent('openPlaceModal', { detail: { ...place, title: place.name } });
+                                      window.dispatchEvent(event);
+                                  }}
+                                  onError={(e) => { (e.target as HTMLImageElement).src = place.image; }}
+                                />
                             </div>
                           </div>
                         ))

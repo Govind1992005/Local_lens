@@ -10,7 +10,6 @@ import { FoodCarousel } from '@/components/FoodCarousel';
 import { CultureSection } from '@/components/CultureSection';
 import { InteractiveMap } from '@/components/InteractiveMap';
 import { AITripPlanner } from '@/components/AITripPlanner';
-import { AgentVisualization } from '@/components/AgentVisualization';
 import { YouTubeAnalysisSection } from '@/components/YouTubeAnalysisSection';
 import { MultiModalAssistantModal } from '@/components/MultiModalAssistantModal';
 import { FooterValueProp } from '@/components/FooterValueProp';
@@ -464,15 +463,6 @@ export default function Home() {
         onSearchQueryChange={(query) => setSearchQuery(query)}
         onSearchSubmit={handleSearchSubmit}
         onQuickFilterClick={handleQuickFilterClick}
-      />
-
-      {/* Real-Time Agent Execution Pipeline Inspector */}
-      <AgentVisualization
-        selectedStateName={selectedState.name}
-        selectedCityId={selectedCityId}
-        loading={loading}
-        placesCount={places.length}
-        foodsCount={foods.length}
       />
 
       {/* Multi-Modal AI Assistant Guide Banner & Modal */}
