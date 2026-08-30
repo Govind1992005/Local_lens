@@ -6,7 +6,7 @@ Executes Food, Places, and Image agents concurrently using asyncio.gather().
 import asyncio
 from typing import Optional, Dict, Any, List
 
-from app.agents.food_agent import search_food
+from app.agents.food_agent import search_food_and_restaurants
 from app.agents.places_agent import search_places
 from app.agents.image_agent import resolve_images
 from app.agents.youtube_agent import analyze_youtube_vlogs
@@ -24,11 +24,12 @@ async def orchestrate_concurrent_search(state: str, city: Optional[str] = None) 
     """Runs Food Search, Places Search, YouTube Vlogs Agent, and Image Resolver Agent in parallel."""
     
     # Step 1: Execute Food, Places, and YouTube Vlogs agents concurrently
-    food_task = asyncio.create_task(search_food(state=state, city=city))
+    food_task = asyncio.create_task(search_food_and_restaurants(state=state, city=city))
     places_task = asyncio.create_task(search_places(state=state, city=city))
     youtube_task = asyncio.create_task(analyze_youtube_vlogs(state=state, city=city))
 
-    raw_foods, raw_places, youtube_insights = await asyncio.gather(food_task, places_task, youtube_task)
+    restaurant_data, raw_places, youtube_insights = await asyncio.gather(food_task, places_task, youtube_task)
+    raw_foods = restaurant_data.get("all_restaurants", []) if isinstance(restaurant_data, dict) else restaurant_data
 
     # Step 2: Execute Image Resolver Agent concurrently for places and foods
     places_img_task = asyncio.create_task(resolve_images(raw_places))

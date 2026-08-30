@@ -106,7 +106,7 @@ async def test_data_gov_agent_metrics(state_input, expected_state_name, expected
 @pytest.mark.asyncio
 async def test_search_orchestrator_parallel_mocking():
     """Mocks food_agent, places_agent, and image_agent to verify orchestrator isolation."""
-    with patch("app.agents.search_orchestrator.search_food", new_callable=AsyncMock) as mock_food, \
+    with patch("app.agents.search_orchestrator.search_food_and_restaurants", new_callable=AsyncMock) as mock_food, \
          patch("app.agents.search_orchestrator.search_places", new_callable=AsyncMock) as mock_places, \
          patch("app.agents.search_orchestrator.resolve_images", new_callable=AsyncMock) as mock_img:
 
