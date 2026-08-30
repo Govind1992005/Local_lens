@@ -24,7 +24,8 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
   placesData = [],
   foodsData = [],
   restaurantTiers,
-  youtubeData
+  youtubeData,
+  dataGovData
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'landmarks' | 'restaurants' | 'youtube' | 'tools'>('landmarks');
