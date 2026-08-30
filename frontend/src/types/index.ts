@@ -58,9 +58,9 @@ export interface TripItineraryDay {
   day: number;
   title: string;
   morning: string;
-  afternoon: str;
-  evening: str;
-  recommended_food: str;
+  afternoon: string;
+  evening: string;
+  recommended_food: string;
 }
 
 export interface TripPlannerResult {
