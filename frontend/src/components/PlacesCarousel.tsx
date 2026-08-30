@@ -129,6 +129,7 @@ export const PlacesCarousel: React.FC<PlacesCarouselProps> = ({
                   <div>
                     {/* Image Header with Badge */}
                     <div className="relative h-48 w-full overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={displayImg}
                         alt={place.title}
@@ -247,6 +248,7 @@ export const PlacesCarousel: React.FC<PlacesCarouselProps> = ({
 
               {/* Modal Image Section */}
               <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src={getDisplayImage(selectedPlace)} 
                   alt={selectedPlace.title}

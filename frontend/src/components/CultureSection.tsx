@@ -36,6 +36,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ stateName, cultu
             className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group hover:shadow-2xl transition-all duration-300"
           >
             <div className="relative h-56 w-full overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={item.image}
                 alt={item.title}

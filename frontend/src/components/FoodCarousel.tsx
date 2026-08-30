@@ -89,6 +89,7 @@ export const FoodCarousel: React.FC<FoodCarouselProps> = ({
                 <div>
                   {/* Food Image & Badge */}
                   <div className="relative h-48 w-full overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={food.image}
                       alt={food.dish_name}

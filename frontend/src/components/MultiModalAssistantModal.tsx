@@ -186,6 +186,7 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                               const event = new CustomEvent('openPlaceModal', { detail: place });
                               window.dispatchEvent(event);
                           }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src={place.image_url || place.image}
                               alt={place.title || place.name}
@@ -403,6 +404,7 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                             </div>
 
                             <div className="flex flex-col items-end space-y-2 flex-shrink-0 w-full sm:w-auto">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                   src={place.image_url || place.image}
                                   alt={place.name}

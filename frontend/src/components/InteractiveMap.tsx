@@ -110,6 +110,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
               <p className="text-xs text-gray-600 mt-2 leading-relaxed">{activePlace.description}</p>
               {activePlace.image_url && (
                 <div className="mt-3 relative w-full h-32 rounded-lg overflow-hidden border border-gray-200">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={activePlace.image_url} 
                     alt={activePlace.title} 
