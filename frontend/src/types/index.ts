@@ -21,8 +21,11 @@ export interface Place {
   reviews_count: number;
   category: string;
   image: string;
+  image_url?: string;
   description: string;
   best_view_time?: string;
+  vlog_consensus?: string;
+  verified_by_data_gov?: boolean;
   latitude: number;
   longitude: number;
   tags: string[];
