@@ -10,7 +10,7 @@ from typing import Dict, Any, Optional
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.tools.youtube.search import YouTubeSearchTool
 
-# 1. Lazy / safe initialization of tools to avoid error when TAVILY_API_KEY is missing
+# 1. Lazy / safe initialization of tools to avoid error when API keys are missing
 tavily_web_and_image_tool = None
 if os.getenv("TAVILY_API_KEY"):
     try:
@@ -23,8 +23,12 @@ if os.getenv("TAVILY_API_KEY"):
     except Exception:
         tavily_web_and_image_tool = None
 
-# 2. Initialize YouTube Search Tool
-youtube_search_tool = YouTubeSearchTool()
+# 2. Safe initialization of YouTube Search Tool
+youtube_search_tool = None
+try:
+    youtube_search_tool = YouTubeSearchTool()
+except Exception:
+    youtube_search_tool = None
 
 # Group tools into list for Agent Tool Binding
 TOOLS = [t for t in [tavily_web_and_image_tool, youtube_search_tool] if t is not None]

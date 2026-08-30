@@ -9,3 +9,4 @@ langchain-community>=0.0.20
 langchain-openai>=0.0.8
 langgraph>=0.0.20
 tavily-python>=0.3.0
+youtube-search-python>=1.6.6
