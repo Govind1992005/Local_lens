@@ -22,7 +22,8 @@ export const AITripPlanner: React.FC<AITripPlannerProps> = ({ states, selectedSt
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/planner', {
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://local-lens-so3q.onrender.com';
+      const response = await fetch(`${apiBaseUrl}/api/planner`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

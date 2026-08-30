@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://local-lens-so3q.onrender.com';
+
 export interface MultiSearchResults {
   places: any[];
   food: any[];
@@ -21,7 +23,7 @@ export function useMultiSearch(state: string, city?: string) {
       const queryParams = new URLSearchParams({ state });
       if (city) queryParams.append('city', city);
 
-      const res = await fetch(`http://localhost:8000/api/v1/search/concurrent?${queryParams.toString()}`);
+      const res = await fetch(`${API_BASE_URL}/api/v1/search/concurrent?${queryParams.toString()}`);
       if (!res.ok) {
         throw new Error(`Failed to fetch search results: ${res.statusText}`);
       }

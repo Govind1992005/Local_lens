@@ -295,7 +295,8 @@ export default function Home() {
 
   // Fetch all 28 states dynamically from FastAPI backend on mount
   useEffect(() => {
-    fetch('http://localhost:8000/api/states')
+    const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://local-lens-so3q.onrender.com';
+    fetch(`${apiBaseUrl}/api/states`)
       .then(res => res.json())
       .then((data: StateData[]) => {
         if (Array.isArray(data) && data.length > 0) {
@@ -324,7 +325,8 @@ export default function Home() {
       params.append('city', selectedCityId);
     }
 
-    fetch(`http://localhost:8000/api/v1/search/concurrent?${params.toString()}`)
+    const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://local-lens-so3q.onrender.com';
+    fetch(`${apiBaseUrl}/api/v1/search/concurrent?${params.toString()}`)
       .then(res => res.json())
       .then(data => {
         if (isMounted && data.results) {

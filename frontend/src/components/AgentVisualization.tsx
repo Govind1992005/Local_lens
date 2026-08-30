@@ -88,7 +88,7 @@ export const AgentVisualization: React.FC<AgentVisualizationProps> = ({
 
               <div className="flex items-start space-x-2 text-emerald-400">
                 <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-                <span>[API ENDPOINT] GET http://localhost:8000/api/v1/search/concurrent?state={encodeURIComponent(selectedStateName)}&city={selectedCityId || ''}</span>
+                <span>[API ENDPOINT] GET /api/v1/search/concurrent?state={encodeURIComponent(selectedStateName)}&city={selectedCityId || ''}</span>
               </div>
 
               {loading ? (
