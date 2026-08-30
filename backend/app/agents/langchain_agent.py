@@ -10,19 +10,24 @@ from typing import Dict, Any, Optional
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_community.tools.youtube.search import YouTubeSearchTool
 
-# 1. Initialize Web & Image Search Tool (Tavily with include_images=True)
-tavily_web_and_image_tool = TavilySearchResults(
-    max_results=5,
-    include_answer=True,
-    include_raw_content=True,
-    include_images=True # Enables image search URLs retrieval
-)
+# 1. Lazy / safe initialization of tools to avoid error when TAVILY_API_KEY is missing
+tavily_web_and_image_tool = None
+if os.getenv("TAVILY_API_KEY"):
+    try:
+        tavily_web_and_image_tool = TavilySearchResults(
+            max_results=5,
+            include_answer=True,
+            include_raw_content=True,
+            include_images=True
+        )
+    except Exception:
+        tavily_web_and_image_tool = None
 
 # 2. Initialize YouTube Search Tool
 youtube_search_tool = YouTubeSearchTool()
 
 # Group tools into list for Agent Tool Binding
-TOOLS = [tavily_web_and_image_tool, youtube_search_tool]
+TOOLS = [t for t in [tavily_web_and_image_tool, youtube_search_tool] if t is not None]
 
 async def execute_langchain_react_agent(state: str, city: Optional[str] = None) -> Dict[str, Any]:
     """

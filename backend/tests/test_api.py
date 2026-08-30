@@ -34,7 +34,9 @@ def test_get_states(api_client):
     response = api_client.get("/api/states")
     assert response.status_code == 200
     states = response.json()
-    assert len(states) == 28
+    assert len(states) == 5
+    expected_state_ids = {"karnataka", "andhra_pradesh", "telangana", "goa", "kerala"}
+    assert {state["id"] for state in states} == expected_state_ids
     for state in states:
         assert "cities" in state
         assert len(state["cities"]) > 0
@@ -43,7 +45,7 @@ def test_get_states(api_client):
 @pytest.mark.parametrize(
     "state_id,city_id,expected_city,excluded_city",
     [
-        ("andhra_pradesh", "kakinada", "kakinada", "visakhapatnam"),
+        ("andhra_pradesh", "visakhapatnam", "visakhapatnam", "rayalaseema"),
         ("telangana", "warangal", "warangal", "hyderabad"),
     ],
 )
@@ -89,7 +91,7 @@ def test_concurrent_search_distinct_image_resolution(api_client):
 @pytest.mark.parametrize(
     "state_input,expected_state_name,expected_first_city_or_place",
     [
-        ("Andhra Pradesh", "Andhra Pradesh", "Kakinada"),
+        ("Andhra Pradesh", "Andhra Pradesh", "Visakhapatnam"),
         ("Telangana", "Telangana", "Charminar"),
         ("Telengana", "Telangana", "Charminar"),
     ],
