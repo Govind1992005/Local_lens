@@ -15,7 +15,7 @@ from app.api.search import router as search_router
 app = FastAPI(
     title="LocalLens API",
     description="Backend API for LocalLens - Discover places like a local",
-    version="1.0.0"
+    version="1.0.1"
 )
 
 app.include_router(search_router)
