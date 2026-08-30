@@ -257,19 +257,59 @@ PLACES_DATA = [
     # Karnataka
     {
         "id": "bangalore-palace", "state_id": "karnataka", "city_id": "bengaluru",
-        "title": "Bangalore Palace & Cubbon Park", "sub_location": "Vasanth Nagar, Bengaluru",
+        "title": "Bangalore Palace", "sub_location": "Vasanth Nagar, Bengaluru",
         "rating": 4.6, "reviews_count": 38000, "category": "Tudor Architecture",
         "best_view_time": "10:00 AM - 1:00 PM (Garden & Palace Audio Tour)",
-        "image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bangalore_Palace_frame.jpg/1280px-Bangalore_Palace_frame.jpg",
         "description": "19th-century royal palace modeled after England's Windsor Castle.", "latitude": 12.9988, "longitude": 77.5921, "tags": ["#Bengaluru", "#Palace"]
+    },
+    {
+        "id": "cubbon-park", "state_id": "karnataka", "city_id": "bengaluru",
+        "title": "Cubbon Park & State Central Library", "sub_location": "Kasturba Road, Bengaluru",
+        "rating": 4.7, "reviews_count": 42000, "category": "Botanical Park",
+        "best_view_time": "6:00 AM - 9:00 AM (Morning Walks & Jogging)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Cubbon_Park_Bengaluru.jpg/1280px-Cubbon_Park_Bengaluru.jpg",
+        "description": "300-acre historic botanical park in the heart of Bengaluru housing red neo-classical buildings.", "latitude": 12.9763, "longitude": 77.5929, "tags": ["#Bengaluru", "#Nature", "#Park"]
+    },
+    {
+        "id": "lalbagh-botanical-garden", "state_id": "karnataka", "city_id": "bengaluru",
+        "title": "Lalbagh Botanical Garden & Glass House", "sub_location": "Mavalli, Bengaluru",
+        "rating": 4.8, "reviews_count": 51000, "category": "Botanical Garden",
+        "best_view_time": "7:00 AM - 10:00 AM (Flower Shows & Lake Walk)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Lalbagh_Glass_House_Bengaluru.jpg/1280px-Lalbagh_Glass_House_Bengaluru.jpg",
+        "description": "Famous 240-acre garden commissioned by Hyder Ali featuring a London Crystal Palace-inspired Glass House.", "latitude": 12.9507, "longitude": 77.5848, "tags": ["#Lalbagh", "#Bengaluru", "#Botanical"]
+    },
+    {
+        "id": "iskcon-bangalore", "state_id": "karnataka", "city_id": "bengaluru",
+        "title": "ISKCON Temple Bangalore", "sub_location": "Rajajinagar, Bengaluru",
+        "rating": 4.8, "reviews_count": 63000, "category": "Spiritual Shrine",
+        "best_view_time": "6:00 PM - 8:30 PM (Evening Aarti & Illumination)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/ISKCON_Temple_Bangalore.jpg/1280px-ISKCON_Temple_Bangalore.jpg",
+        "description": "One of the largest ISKCON temple complexes in the world located on Hare Krishna Hill.", "latitude": 13.0098, "longitude": 77.5511, "tags": ["#ISKCON", "#Bengaluru", "#Temple"]
+    },
+    {
+        "id": "commercial-street-bangalore", "state_id": "karnataka", "city_id": "bengaluru",
+        "title": "Commercial Street & Tasker Town", "sub_location": "Tasker Town, Bengaluru",
+        "rating": 4.5, "reviews_count": 31000, "category": "Shopping & Food Promenade",
+        "best_view_time": "4:00 PM - 9:00 PM (Street Shopping & Street Food)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Commercial_Street_Bangalore.jpg/1280px-Commercial_Street_Bangalore.jpg",
+        "description": "Bustling shopping hub renowned for silk apparel, jewelry, antiques, and street delicacies.", "latitude": 12.9822, "longitude": 77.6083, "tags": ["#Shopping", "#Bengaluru", "#StreetFood"]
     },
     {
         "id": "hampi-boulder-ruins", "state_id": "karnataka", "city_id": "hampi",
         "title": "Virupaksha Temple & Hampi Ruins", "sub_location": "Tungabhadra River, Hampi",
         "rating": 4.9, "reviews_count": 45000, "category": "UNESCO World Heritage",
         "best_view_time": "5:30 AM - 7:30 AM (Matanga Hill Sunrise)",
-        "image": "https://images.unsplash.com/photo-1600100397608-f010e423b971?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Hampi_Virupaksha_temple.jpg/1280px-Hampi_Virupaksha_temple.jpg",
         "description": "14th-century Vijayanagara Empire stone temples and surreal boulder hills.", "latitude": 15.3350, "longitude": 76.4600, "tags": ["#Hampi", "#Vijayanagara"]
+    },
+    {
+        "id": "mysore-palace", "state_id": "karnataka", "city_id": "mysore",
+        "title": "Mysore Palace (Amba Vilas)", "sub_location": "Sayyaji Rao Road, Mysuru",
+        "rating": 4.9, "reviews_count": 88000, "category": "Royal Heritage Palace",
+        "best_view_time": "7:00 PM - 7:45 PM (Sunday & Festival Illumination)",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mysore_Palace_Morning.jpg/1280px-Mysore_Palace_Morning.jpg",
+        "description": "Official residence of the Wadiyar dynasty and one of India's most visited royal palaces.", "latitude": 12.3052, "longitude": 76.6552, "tags": ["#Mysore", "#Palace", "#Wadiyar"]
     },
 
     # Maharashtra
@@ -469,8 +509,22 @@ FOODS_DATA = [
         "id": "masala-dosa", "state_id": "karnataka", "city_id": "bengaluru",
         "dish_name": "Bengaluru Crispy Masala Dosa", "category": "Iconic South Breakfast",
         "price_inr": 90, "trust_score": 99,
-        "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=80",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pesarattu_Dosa.jpg/1280px-Pesarattu_Dosa.jpg",
         "review_quote": "Golden butter-crisped rice crepe with spiced potato filling and coconut chutney.", "source": "Bengaluru Tiffin Club", "tags": ["#MasalaDosa", "#Bengaluru"]
+    },
+    {
+        "id": "bisi-bele-bath", "state_id": "karnataka", "city_id": "bengaluru",
+        "dish_name": "Bisi Bele Bath", "category": "Traditional Rice Delicacy",
+        "price_inr": 110, "trust_score": 97,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/South_Indian_Thali.jpg/1280px-South_Indian_Thali.jpg",
+        "review_quote": "Hot lentil rice cooked with aromatic spices, vegetables, ghee, and crunchy boondi.", "source": "Karnataka Tiffin House", "tags": ["#BisiBeleBath", "#Bengaluru", "#Authentic"]
+    },
+    {
+        "id": "mysore-pak", "state_id": "karnataka", "city_id": "bengaluru",
+        "dish_name": "Melt-in-mouth Mysore Pak", "category": "Royal Sweet Delicacy",
+        "price_inr": 150, "trust_score": 99,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Kakinada_Gottam_Kaja.jpg/1280px-Kakinada_Gottam_Kaja.jpg",
+        "review_quote": "Rich traditional sweet crafted with pure ghee, gram flour, and cardamom.", "source": "Karnataka Sweet Heritage", "tags": ["#MysorePak", "#Sweet", "#Royal"]
     },
 
     # Maharashtra
